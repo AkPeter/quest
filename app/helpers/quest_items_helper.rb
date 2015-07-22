@@ -1,0 +1,2 @@
+module QuestItemsHelper
+end

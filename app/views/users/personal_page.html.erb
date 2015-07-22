@@ -1,0 +1,13 @@
+<div class="auth-block content-z-top col-lg-offset-1 col-lg-10">
+
+  <div class="ticket-items col-lg-10 col-lg-offset-1">
+  <% if local_assigns.fetch(:tickets_count) %>
+    <%= render :partial => 'shared/user_tickets' unless local_assigns.fetch(:admin) %>
+  <% end  %>
+  </div>
+
+  <div class="user-reg-info col-lg-10 col-lg-offset-1">
+    <%= render :partial => 'shared/user_regdata' %>
+  </div>
+
+</div>

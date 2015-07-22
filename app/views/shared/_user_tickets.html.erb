@@ -1,0 +1,30 @@
+<h1>
+Купленные/Зарезервированные сеансы <%= @tickets.count %>
+</h1>
+
+<table class="table">
+  <tr>
+    <th>
+      Название квеста
+    </th>
+    <th>
+      Начало
+    </th>
+    <th>
+      Статус
+    </th>
+  </tr>
+  <% @tickets.each do |ticket| %>
+  <tr>
+    <td>
+      <%= ticket.quest_item.name %>
+    </td>
+    <td>
+      <%= l(ticket.dt.to_datetime, :format => "%d %B %Y %A %H:%M") %>
+    </td>
+    <td>
+      <%= ticket.ticket_status.name %>
+    </td>
+  </tr>
+  <% end %>
+</table>

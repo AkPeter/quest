@@ -1,0 +1,2 @@
+module PricePresetsHelper
+end

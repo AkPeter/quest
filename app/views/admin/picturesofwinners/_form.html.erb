@@ -1,0 +1,38 @@
+<%= form_for([:admin, @picturesofwinner]) do |f| %>
+  <% if @picturesofwinner.errors.any? %>
+    <div id="error_explanation">
+      <h2>ошибки</h2>
+
+      <ul>
+      <% @picturesofwinner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.label 'Название Квеста' %><br>
+      <%= f.collection_select(:quest_item_id, QuestItem.all, :id, :name) %>
+    </div>
+    <div class="field">
+    <%= f.label 'Дата победы' %><br>
+    <%= f.date_select :goaldate %>
+  </div>
+  <div class="field">
+    <%= f.label 'Результат прохождения' %><br>
+    <%= f.time_select :besttime, :default => Time.new.at_beginning_of_day %>
+  </div>
+    <div class="field">
+      <%= f.label 'Описание' %><br>
+      <%= f.text_area :description, :default => '' %>
+    </div>
+  <div class="field">
+    <%= f.label 'Загрузи фотку' %><br>
+        <%= f.file_field :photourl %><!--, :multiple => true-->
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-success"%>
+  </div>
+<% end %>

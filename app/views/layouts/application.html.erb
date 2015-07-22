@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Охуительные квесты в реальности на Дворникова 7 в городе Москва</title>
+  <meta name="description" content="Вы оказываетесь в бункере противника, ваша задача зв 1 час выбраться из него, решив несколько головоломок!">
+  <meta name="viewport" content="width=900, maximum-scale=0.8, minimum-scale=0.2, user-scalable=yes" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+<body class="quest-page">
+
+<div class="super-header col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="head-menu-links col-lg-6 col-md-6 col-sm-4 col-xs-4">
+    <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->
+    <%= link_to root_url, class: 'user-auth' do %>
+        <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span><br>Главная</p>
+    <% end %>
+    <% if current_user&&current_user.admin %>
+        <%= link_to admin_main_index_url, class: 'user-auth' do %>
+            <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Администрирование</p>
+        <% end %>
+    <% end %>
+
+  </div>
+
+  <div class="head-menu-auth col-lg-6 col-md-6 col-sm-8 col-xs-8">
+    <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->
+    <% unless current_user %>
+        <%= link_to signin_url, class: 'user-auth' do %>
+            <p><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><br>Вход / Регистрация</p>
+        <% end %>
+    <% else %>
+        <%= link_to personal_page_url, class: 'user-auth' do %>
+            <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Личная страница</p>
+        <% end %>
+        <%= link_to logout_path, class: 'user-auth' do %>
+            <p><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><br>Выход</p>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div id="bg-img"></div>
+
+<div class="wrap">
+
+  <div class="content-z-top col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= yield %>
+  </div>
+
+</div>
+
+<div class="reserve-ticket-block">
+  <% if current_ticket&&controller_name!='robokassa' %>
+    <%= render :partial => 'shared/ticket_reserve_info' %>
+  <% end %>
+</div>
+
+</body>
+</html>

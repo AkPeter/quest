@@ -1,0 +1,27 @@
+<div class="auth-block payment-page content-z-top col-lg-offset-2 col-lg-8">
+    <!--СДЕЛАЙ ЭТО ПАРТИАЛОМ !! -->
+  <h2>Информация о платеже</h2>
+  <p>На какой квест я собрался : <%= @ticket.quest_item.name %></p>
+  <p>Когда начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></p>
+  <p>Сколько я должен заплатить : <%= @ticket.price %> руб.</p>
+  <p><%= render :partial => 'shared/ticket_reserve_prepaid' %></p>
+  <p class="robokassa">После нажатия кнопки "Приобрести" вы будете отправлены на страницу платежной системы Robokassa для завершения платежа.</p>
+
+<p>
+    <!--https://merchant.roboxchange.com/Index.aspx-->
+    <%= form_tag('http://test.robokassa.ru/Index.aspx', method: :get) do %>
+
+      <%= hidden_field_tag :MrchLogin,          @params[:mrch_login] %>
+      <%= hidden_field_tag :OutSum,             @params[:out_sum]  %>
+      <%= hidden_field_tag :InvId,              @params[:inv_id] %>
+      <%= hidden_field_tag :Desc,               @params[:desc] %>
+      <%= hidden_field_tag :SignatureValue,     @params[:signature_value] %>
+      <%= hidden_field_tag :Culture,            @params[:culture] %>
+
+      <%= submit_tag :Приобрести, class: "btn btn-success" %>
+
+    <% end %>
+
+</p>
+
+</div>

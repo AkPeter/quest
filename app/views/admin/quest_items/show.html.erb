@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @quest_item.name %>
+</p>
+
+<p>
+  <strong>Quest status:</strong>
+  <%= @quest_item.quest_status_id %>
+</p>
+
+<%= link_to 'Edit', edit_quest_item_path(@quest_item), class: "btn btn-primary" %> |
+<%= link_to 'Back', quest_items_path, class: "btn btn-primary" %>

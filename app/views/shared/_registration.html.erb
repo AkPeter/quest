@@ -1,0 +1,18 @@
+<%= form_tag('users', method: :post) do %>
+
+
+    <div class="form-group field-input-text">
+      Имя <%= text_field_tag :name %>
+    </div>
+    <div class="form-group field-input-text">
+      Почта <%= email_field_tag :email %>
+    </div>
+    <div class="form-group field-input-text">
+      Телефон <%= telephone_field_tag :phone %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Зарегистрироваться" %>
+    </div>
+
+
+<% end  %>

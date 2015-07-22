@@ -1,0 +1,11 @@
+<div class="auth-block content-z-top col-lg-offset-3 col-lg-6">
+
+  <p>всё клёво, теперь ты обладатель этого билета ! поздравляем !</p>
+  <p>не опаздывай ! смс оповещение ждёт тебя !</p>
+
+  <ul>
+    <li>квест : <%= @ticket.quest_item.name %></li>
+    <li>когда начало :<%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
+  </ul>
+
+</div>

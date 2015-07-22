@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quest item:</strong>
+  <%= @price_preset.quest_item_id %>
+</p>
+
+<p>
+  <strong>Daytype:</strong>
+  <%= @price_preset.daytype_id %>
+</p>
+
+<p>
+  <strong>t0:</strong>
+  <%= @price_preset.t0 %>
+</p>
+
+<p>
+  <strong>t1:</strong>
+  <%= @price_preset.t1 %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @price_preset.price %>
+</p>
+
+<%= link_to 'Редактировать', edit_price_preset_path(@price_preset), class: "btn btn-primary" %> |
+<%= link_to 'Назад', price_presets_path, class: "btn btn-primary" %>

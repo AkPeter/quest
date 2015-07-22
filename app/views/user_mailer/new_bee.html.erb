@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>
+  Привет <%= @username %> и с подключением к нашей весёлой компании хипстеров !
+
+  Твой пароль для входа <%= @password %>
+  <a href="<%= @signin %>">
+    Заходи:
+  </a>
+</p>
+
+<%= render :partial => 'shared/mailer_sign' %>
+
+</body>
+</html>

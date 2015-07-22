@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Галлерея Победителей</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Название Квеста</th>
+      <th>Дата победы</th>
+      <th>Результат прохождения</th>
+      <th>Описание</th>
+      <th>Фотка</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @picturesofwinners.each do |picturesofwinner| %>
+      <tr>
+        <td><%= picturesofwinner.quest_item.name %></td>
+        <td><%= picturesofwinner.goaldate %></td>
+        <td><%= picturesofwinner.besttime.strftime("%H:%M") %></td>
+        <td><%= picturesofwinner.description %></td>
+        <td><%= image_tag picturesofwinner.photourl.url(:thumb) %></td>
+        <td><%= link_to 'редактировать', edit_admin_picturesofwinner_path(picturesofwinner), class: "btn btn-success btn-xs" %></td>
+        <td><%= link_to 'удалить', [:admin, picturesofwinner], method: :delete, data: { confirm: 'Точно?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить новых победителей', new_admin_picturesofwinner_path, class: "btn btn-primary" %>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+дорогой <%= @ticket.user.name %> !<br>
+ты зарезервировал билет на какой квест <%= @ticket.quest_item.name %><br>
+начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %><br>
+оплатить его можешь здесь <%= @signin %>
+резерв продержится <%= @reserve_time %> минут.
+</body>
+</html>

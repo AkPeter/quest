@@ -1,0 +1,5 @@
+дорогой <%= @ticket.user.name %> !
+ты зарезервировал билет на какой квест <%= @ticket.quest_item.name %>
+начало :<%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
+оплатить его можешь здесь <%= @signin %>
+резерв продержится <%= @reserve_time %> минут.

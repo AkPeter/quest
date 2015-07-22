@@ -1,0 +1,54 @@
+<%= form_for([:admin, @price_preset]) do |f| %>
+  <% if @price_preset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@price_preset.errors.count, "error") %> prohibited this price_preset from being saved:</h2>
+
+      <ul>
+      <% @price_preset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <table class="table">
+      <tr>
+        <th>
+            Название
+        </th>
+        <th>
+            Тип дня
+        </th>
+        <th>
+            С
+        </th>
+        <th>
+            По
+        </th>
+        <th>
+            Прайс
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <%= @price_preset.quest_item.name %>
+        </th>
+        <th>
+          <%= t @price_preset.daytype.name %>
+        </th>
+        <th>
+          <%= f.time_select :t0, class: "form-control" %>
+        </th>
+        <th>
+          <%= f.time_select :t1, class: "form-control" %>
+        </th>
+        <th>
+          <%= f.text_field :price, class: "form-control" %>
+        </th>
+      </tr>
+    </table>
+    <p>
+      <%= f.submit "Применить изменения", class: "btn btn-success" %>
+    </p>
+
+<% end %>

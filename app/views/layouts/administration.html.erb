@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="adm-wrap fheight">
+
+<aside class="left-area">
+  <div class="left-menu">
+    <ul class="nav nav-pills nav-stacked">
+      <%= render "shared/admin_links" %>
+    </ul>
+  </div>
+</aside>
+
+<section id="adm-content" class="container-fluid row">
+
+    <header id="adm-header">
+      <div class="header-content container-fluid">
+        <div class="adm-head-menu">
+          <%= link_to 'На главную страницу', root_url, class: "btn btn-primary btn-xs", role: "button" %>
+          <%= link_to 'Личные данные', personal_page_url, class: "btn btn-primary btn-xs", role: "button" %>
+          <%= link_to 'Выйти', logout_path, class: "btn btn-danger btn-xs", role: "button" %>
+        </div>
+      </div>
+    </header>
+
+    <section class="container-fluid">
+      <%= yield %>
+    </section>
+
+    <section id="adm-footer">
+    </section>
+
+</section>
+
+</div>
+
+</body>
+</html>

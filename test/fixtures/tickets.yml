@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dt: 2015-06-23 18:44:44
+  statusid: 1
+  price: 1
+  uid: 1
+
+two:
+  dt: 2015-06-23 18:44:44
+  statusid: 1
+  price: 1
+  uid: 1

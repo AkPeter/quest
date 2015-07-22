@@ -1,0 +1,20 @@
+<%= form_tag('price_update', method: :post ) do %>
+    <div class="field">
+      Название квеста <%= select_tag 'quest_item', options_from_collection_for_select(@quest_item, 'id', 'name') %>
+    </div>
+    <div class="field">
+      С <%= datetime_select(:start, :dt) %>
+    </div>
+    <div class="field">
+      По <%= datetime_select(:end, :dt) %>
+    </div>
+    <div class="field">
+      Изменение цены (например +1000, -5000)<%= text_field_tag :priceup %>
+    </div>
+    <div class="field">
+      Изменить статус на <%= select_tag 'status', options_from_collection_for_select(@statuses, 'id', 'name') %>
+    </div>
+    <div class="actions">
+      <%= submit_tag 'Внести изменения', class: "btn btn-success" %>
+    </div>
+<% end %>

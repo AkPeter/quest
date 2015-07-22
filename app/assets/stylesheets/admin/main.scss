@@ -1,0 +1,49 @@
+// Place all the styles related to the admin/main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+.adm-head-menu {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.adm-wrap {
+  display: table;
+  table-layout: fixed;
+  border-spacing: 0;
+  width: 100%;
+  position: absolute;
+}
+
+
+.left-area, #adm-content {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+  float: none;
+}
+
+.left-area {
+  background-color: #fcfcfd;
+  border-right: 1px solid #788288;
+  width: 190px;
+  padding: 10px;
+}
+
+#adm-content {}
+
+.left-menu {
+  display: table;
+  border-spacing: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}

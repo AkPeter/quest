@@ -1,0 +1,5 @@
+<div class="ticket-items col-lg-10 col-lg-offset-1">
+  <% if local_assigns.fetch(:tickets_count) %>
+      <%= render :partial => 'shared/admin_tickets' %>
+  <% end  %>
+</div>

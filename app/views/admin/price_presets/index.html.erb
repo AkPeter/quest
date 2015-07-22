@@ -1,0 +1,36 @@
+<h1>Имеющиеся пресеты</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Название квеста</th>
+      <th>Тип дня</th>
+      <th>С</th>
+      <th>По</th>
+      <th>Прайс</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_presets.each do |price_preset| %>
+      <tr>
+        <td><%= price_preset.quest_item.name %></td>
+        <td><%= t price_preset.daytype.name %></td>
+        <td><%= price_preset.t0.strftime ("%H:%M") %></td>
+        <td><%= price_preset.t1.strftime ("%H:%M") %></td>
+        <td><%= price_preset.price %></td>
+        <td><%= link_to 'Редактировать', edit_admin_price_preset_path(price_preset), class: "btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Удалить', [:admin, price_preset], method: :delete, data: { confirm: 'Точно удаляем ?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p>
+<%= link_to 'Админить квесты', admin_quest_items_path, class: "btn btn-primary" %>
+</p>
+
+<p id="notice"><%= notice %></p>

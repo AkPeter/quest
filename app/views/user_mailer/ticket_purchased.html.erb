@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+дорогой <%= @ticket.user.name %> !
+<li>на какой квест я собрался : <%= @ticket.quest_item.name %></li>
+<li>когда начало :<%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
+</body>
+</html>
