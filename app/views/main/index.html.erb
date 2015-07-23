@@ -71,14 +71,14 @@
 
         <% @tickets.each do |k, ticket_hash| %>
         <div class="calendar-day <%= "calendar-day-#{/\D+/.match(k)}" %> col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="day-date col-sm-12 col-xs-12">
+          <div class="day-date">
             <div class="date-item">
-              <span class="week-day"><%= l(ticket_hash[0].dt.to_datetime, :format => "%A") %></span>,
               <span class="day-month"><%= l(ticket_hash[0].dt.to_datetime, :format => "%d %B") %></span>
+              <span class="week-day"><%= l(ticket_hash[0].dt.to_datetime, :format => "%A") %></span>
               <!--TicketStatus.create ([{name: "Свободен"}, {name: "Зарезервирован"}, {name: "Выкуплен"}, {name: "Снят с продажи"}])-->
             </div>
           </div>
-          <div class="day-quests col-sm-12 col-xs-12">
+          <div class="day-quests">
             <% ticket_hash.each do |ticket| %>
                 <% ticket.ticket_status_id = 5 if DateTime.now > ticket.dt.to_datetime %>
                   <div class="ticket-button-width" style="width: <%= tickets_view_percent current_quest %>%;">
