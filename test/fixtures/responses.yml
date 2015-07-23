@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quest_item_id: MyString
+  user_id: MyString
+  content: MyString
+
+two:
+  quest_item_id: MyString
+  user_id: MyString
+  content: MyString
