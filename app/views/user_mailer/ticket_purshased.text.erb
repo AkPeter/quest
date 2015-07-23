@@ -1,3 +1,4 @@
-дорогой <%= @ticket.user.name %> !
-на какой квест я собрался : <%= @ticket.quest_item.name %>
-когда начало :<%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
+привет <%= @ticket.user.name %> !
+твой билет на квест <%= @ticket.quest_item.name %>
+начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
+не пропусти !

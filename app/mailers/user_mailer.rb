@@ -25,7 +25,7 @@ class UserMailer < ApplicationMailer
 
   def ticket_purchased(ticket)
     @ticket = ticket
-    mail(to: ticket.user.email, subject: 'Дворников - Квестов. Поздравляем.')
+    mail(to: ticket.user.email, subject: 'Дворников - Квестов. Ты приобрёл билет !')
   end
 
   def ticket_remind(ticket)
