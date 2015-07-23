@@ -180,21 +180,16 @@ header#header {
 }
 
 .quest-logo {
-  border: 7px solid #fff;
-  border-radius: 20px;
   text-align: center;
   font-size: 40px;
   text-transform: uppercase;
   font-weight: bolder;
   color: #fff;
   line-height: 1;
-  padding: 30px 0 !important;
-  height: 155px;
-  width: 100%;
   .logo-block {
-    position: absolute;
-    z-index: 601;
-    width: 100%;
+    border: 7px solid #fff;
+    border-radius: 20px;
+    padding: 30px 0;
   }
   .small-logo-text {
     font-size: 95%;
@@ -217,6 +212,14 @@ header#header {
     }
   }
 }
+.another-quest-info {
+  color: #fff;
+  font-weight: bold;
+  margin: 85px 15px 0 20px;
+  border: 5px dashed #fff;
+  padding: 10px 30px 30px 30px;
+  border-radius: 20px;
+}
 .quest-h-adress {
   font-size: 16px;
   margin: 0 0 30px 0;
@@ -238,13 +241,12 @@ header#header {
 }
 .social-block {
   text-align: center;
-  margin: 0 0 30px 0;
-  height: 50px;
+  margin: 0 0 20px 0;
 }
 
 .info-quest-warning {
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /* Payment */
@@ -299,10 +301,9 @@ header#header {
 #content-area {
   position: relative;
   z-index: 700;
-  border-radius: 10px;
-  padding: 20px;
+  padding: 20px 10px 30px 0;
   margin-top: 20px;
-  margin-bottom: 20px;
+  border-bottom: 5px dashed #fff;
   min-height: 800px;
   background: #000000;
   background: rgba(0, 0, 0, 0.6);
@@ -336,15 +337,12 @@ header#header {
   margin: 0;
 }
 
-.calendar-day-holiday {
-}
-
 .date-item {
   color: #fff;
-  padding: 12px 0 5px 0;
-  font-size: 80%;
-  text-align: right;
-  line-height: 1.1;
+  padding: 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
 }
 .calendar-day-holiday .date-item {
   color: darkmagenta;
@@ -359,17 +357,6 @@ header#header {
   margin: 10px 0 0 0;
   padding-top: 5px;
   padding-bottom: 5px;
-  &:hover {
-    background-color: #121212;
-    border-radius: 10px;
-    .price-set-block .price-set span.price-set-tickets {
-      background-color: #121212;
-    }
-  }
-}
-
-.calendar-day-header {
-  display: none;
 }
 
 .date-item-header {
@@ -475,8 +462,6 @@ header#header {
   float: left;
   padding-top: 15px;
   padding-bottom: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
   background: #000000;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -485,16 +470,17 @@ header#header {
   height: 300px;
 }
 .yamap {
-  height: 300px;
-  width: 100%;
   float: left;
-  border-radius: 4px;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .bottom-info {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
   padding: 15px 0 25px 0;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .footer-bottom {
@@ -637,12 +623,16 @@ a.link-to-footer {
     text-align: center;
     line-height: 1;
     span.price-set-tickets {
-      background-color: #000;
-      padding: 0 7px;
+      background-color: #fff;
+      color: #111;
+      padding: 2px 7px;
+      border-radius: 7px;
+      font-size: 10px;
     }
     .price-set-line {
       border: 1px solid;
       border-top: none;
+      border-radius: 0 0 5px 5px;
       height: 5px;
       margin-top: -10px;
       margin-left: 3px;
@@ -664,14 +654,32 @@ input.btn.btn-success.btn-lg {
 
 /* Адаптивчик */
 
+@media (max-width: 1200px) {
+
+  .another-quest-info {
+    margin: 15px 15px 55px 15px;
+    padding: 10px 20px 20px 20px;
+  }
+
+}
+
 @media (max-width: 992px) {
+
+  header#header {
+    padding-top: 130px;
+  }
+
+  .info-quest-warning {
+    margin-top: 30px;
+    text-align: left;
+  }
+
+  #content-area {
+    padding: 20px 0 30px 0;
+  }
 
   #content {
     padding-left: 15px;
-  }
-
-  .calendar-day-header {
-    display: none;
   }
 
   .calendar-day {
@@ -684,13 +692,18 @@ input.btn.btn-success.btn-lg {
   }
 
   .date-item {
-    font-size: 100%;
+    font-size: 120%;
     text-align: center;
     font-weight: bold;
   }
 
   .quest-text {
     text-align: center;
+  }
+
+  .another-quest-info {
+    margin: 15px 15px 55px 15px;
+    padding: 10px 20px 20px 20px;
   }
 
   .ticket-button-width {
@@ -744,17 +757,26 @@ input.btn.btn-success.btn-lg {
 
 @media (max-width: 768px) {
 
+  header#header {
+    padding-top: 130px;
+  }
+
+  .info-quest-warning {
+    margin-top: 30px;
+    text-align: left;
+  }
+
   .logo-block {
     font-size: 80%;
     padding-top: 1.2%;
   }
 
-  #content {
-    padding-left: 15px;
+  #content-area {
+    padding: 20px 0 30px 0;
   }
 
-  .calendar-day-header {
-    display: none;
+  #content {
+    padding-left: 15px;
   }
 
   .calendar-day {
@@ -767,9 +789,14 @@ input.btn.btn-success.btn-lg {
   }
 
   .date-item {
-    font-size: 100%;
+    font-size: 140%;
     text-align: center;
     font-weight: bold;
+  }
+
+  .another-quest-info {
+    margin: 15px 15px 55px 15px;
+    padding: 10px 20px 20px 20px;
   }
 
   .ticket-button-width {
@@ -823,17 +850,26 @@ input.btn.btn-success.btn-lg {
 
 @media (max-width: 520px) {
 
+  header#header {
+    padding-top: 130px;
+  }
+
+  .info-quest-warning {
+    margin-top: 30px;
+    text-align: left;
+  }
+
   .logo-block {
     font-size: 80%;
     padding-top: 1.2%;
   }
 
-  #content {
-    padding-left: 15px;
+  #content-area {
+    padding: 20px 0 30px 0;
   }
 
-  .calendar-day-header {
-    display: none;
+  #content {
+    padding-left: 15px;
   }
 
   .calendar-day {
@@ -846,9 +882,14 @@ input.btn.btn-success.btn-lg {
   }
 
   .date-item {
-    font-size: 100%;
+    font-size: 150%;
     text-align: center;
     font-weight: bold;
+  }
+
+  .another-quest-info {
+    margin: 15px 15px 55px 15px;
+    padding: 10px 20px 20px 20px;
   }
 
   .ticket-button-width {
