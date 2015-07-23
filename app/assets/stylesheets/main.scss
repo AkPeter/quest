@@ -196,14 +196,11 @@ header#header {
     z-index: 601;
     width: 100%;
   }
-  .dvornikova-7 {
-    position: absolute;
-    z-index: 600;
-    width: 100%;
-    text-align: center;
-    font-size: 170px;
-    opacity: 0.5;
-    top: -15px;
+  .small-logo-text {
+    font-size: 95%;
+  }
+  .magenta-text {
+    color: #d43f3a;
   }
 }
 .quest-info {
@@ -400,6 +397,7 @@ header#header {
 .winners-images {
   margin-top: 30px;
   text-align: center;
+  border-top: 1px solid #333;
   h2 {
     color: #fff;
     margin: 15px 0;
@@ -476,7 +474,6 @@ header#header {
 /* Footer */
 
 #footer {
-  min-height: 440px;
   z-index: 702;
   position: relative;
   color: #fff;
@@ -496,12 +493,18 @@ header#header {
   height: 300px;
   width: 100%;
   float: left;
+  border-radius: 4px;
 }
 .bottom-info {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
   padding: 15px 0 25px 0;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+  color: #fff;
 }
 
 /* Administration */
