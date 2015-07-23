@@ -45,6 +45,11 @@ class RobokassaController < ApplicationController
   end
 
   def transaction_confirmed
+    @ticket = current_ticket
+
+    time2remind = @ticket.dt.to_datetime - TicketsController::UserRemindBefore
+    TicketUserRemindJob.set(wait_until: time2remind).perform_later(@ticket.id, current_user.id) if DateTime.now < time2remind
+
     # всё прошло успешно - можно потрепать пользователя по плечу
     # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
     if current_ticket&&current_ticket.id == 3
