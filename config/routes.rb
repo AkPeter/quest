@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   post 'ticket/reserve' => 'tickets#reserve'
 
-  get 'paid_confirmed' => 'robokassa#paid_confirmed'
+  get 'robokassa/paid_confirmed' => 'robokassa#paid_confirmed'
   get 'transaction_confirmed' => 'robokassa#transaction_confirmed'
   post 'abort_mission' => 'robokassa#abort_mission'
 
