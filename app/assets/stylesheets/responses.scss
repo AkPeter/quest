@@ -1,3 +1,28 @@
 // Place all the styles related to the responses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.responses {
+  color: #fff;
+  .responses-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .user-response-name {
+      font-size: 120%;
+      font-style: italic;
+    }
+    .response-content-body {
+      font-style: italic;
+    }
+  }
+}
+
+.select-quest {
+  select#response_quest_item_id {
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

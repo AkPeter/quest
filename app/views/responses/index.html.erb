@@ -1,11 +1,13 @@
-<div class="responses">
-    <h1>
+<div class="responses col-xs-12">
+    <h1 class="content-center">
       Отзывы
     </h1>
-
-    <% @responses.each do |response| %>
-        <p>
-            <%= response.created_at.strftime "%Y %m %d %H:%M" %> <%= response.user.name %> оставил запись : <%= response.content %>
-        </p>
-    <% end %>
+    <div class="responses-content col-xs-12">
+        <% @responses.each do |response| %>
+          <div class="col-xs-4">
+            <p class="user-response-name"><%= response.created_at.strftime "%Y %m %d %H:%M" %> | <%= response.user.name %></div>
+            <p class="response-content-body"><%= response.content %></p>
+          </div>
+        <% end %>
+    </div>
 </div>

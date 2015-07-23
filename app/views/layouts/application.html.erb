@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Охуительные квесты в реальности на Дворникова 7 в городе Москва</title>
   <meta name="description" content="Вы оказываетесь в бункере противника, ваша задача зв 1 час выбраться из него, решив несколько головоломок!">
-  <meta name="viewport" content="width=900, maximum-scale=0.8, minimum-scale=0.2, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,7 +24,7 @@
     <% end %>
     <% if current_user&&current_user.admin %>
         <%= link_to admin_main_index_url, class: 'user-auth' do %>
-            <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Администрирование</p>
+            <p><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><br>Администрирование</p>
         <% end %>
     <% end %>
 
@@ -47,14 +47,13 @@
   </div>
 </div>
 
-<div id="bg-img"></div>
+<div id="bg-img" class="page-bg"></div>
+<div id="bg-fon" class="page-bg-fon"></div>
 
-<div class="wrap">
-
+<div id="wrap-area" class="wrap">
   <div class="content-z-top col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <%= yield %>
   </div>
-
 </div>
 
 <div class="reserve-ticket-block">

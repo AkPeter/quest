@@ -1,8 +1,7 @@
 <%= form_for @response do |f| %>
     <% if @response.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@response.errors.count, "ошибка") %> чёт не то:</h2>
-
+          <h2><%= pluralize(@response.errors.count, "ошибка") %>Что-то пошло не так:</h2>
           <ul>
             <% @response.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -12,15 +11,15 @@
     <% end %>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="field">
+    <div class="field select-quest">
       <%= f.label :Квест %><br>
       <%= f.collection_select(:quest_item_id, QuestItem.all, :id, :name) %>
     </div>
-    <div class="field">
+    <div class="field input-text">
       <%= f.label :Отзыв %><br>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, class: "form-control" %>
     </div>
     <div class="actions">
-      <%= f.submit 'Послать! .)', class: "btn btn-success" %>
+      <%= f.submit 'Отправить', class: "btn btn-success" %>
     </div>
 <% end %>
