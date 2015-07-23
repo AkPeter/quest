@@ -25,13 +25,10 @@ time, mark, audio, video {
     background:transparent;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 body {
     line-height:1;
 	background-color: #000;
+    overflow-y: scroll;
     &.quest-page {
       background-color: #0a1c34 !important;
     }
@@ -72,7 +69,7 @@ img, li { vertical-align:top}
 
 .hh-top {
   position: fixed;
-  z-index: 9999;
+  z-index: 500;
   width: 100%;
   background-color: #000;
 }
@@ -84,7 +81,11 @@ h1 {
 
 .wrap {
   position: relative;
-  z-index: 1000;
+  z-index: 200;
+}
+
+.modal-backdrop {
+  z-index: 190 !important;
 }
 
 .fheight {
@@ -102,7 +103,7 @@ h1 {
 .super-header {
   position: absolute !important;
   text-align: center;
-  z-index: 9999;
+  z-index: 600;
   padding: 20px 0 0 0;
   .head-menu-links {
     float: left;
@@ -144,7 +145,7 @@ h1 {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   display: inline-block;
   background-size: cover;
   padding: 0;
@@ -156,7 +157,7 @@ h1 {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   display: inline-block;
   background-size: cover;
   padding: 0;
@@ -166,7 +167,7 @@ h1 {
 
 header#header {
   position: relative;
-  z-index: 1000;
+  z-index: 500;
   padding-top: 200px;
 }
 
@@ -192,12 +193,12 @@ header#header {
   width: 100%;
   .logo-block {
     position: absolute;
-    z-index: 8000;
+    z-index: 601;
     width: 100%;
   }
   .dvornikova-7 {
     position: absolute;
-    z-index: 7999;
+    z-index: 600;
     width: 100%;
     text-align: center;
     font-size: 170px;
@@ -300,7 +301,7 @@ header#header {
 
 #content-area {
   position: relative;
-  z-index: 9000;
+  z-index: 700;
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
@@ -312,7 +313,7 @@ header#header {
 
 #content {
   position: relative;
-  z-index: 1000;
+  z-index: 701;
 }
 
 /* Calendar */
@@ -419,11 +420,15 @@ header#header {
   }
 }
 
+.img-date {
+  font-size: 80%;
+}
+
 /* Signin */
 
 .content-z-top {
   position: relative;
-  z-index: 9999;
+  z-index: 702;
 }
 
 .auth-block {
@@ -472,7 +477,7 @@ header#header {
 
 #footer {
   min-height: 440px;
-  z-index: 1000;
+  z-index: 702;
   position: relative;
   color: #fff;
   float: left;

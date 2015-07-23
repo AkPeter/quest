@@ -9,17 +9,10 @@
     :retina   => ['1200>',     :jpg, :quality => 100-->
 
     <div class="winner-img">
-    <a href="<%= record.photourl.url(:large) %>" rel="lightbox" title="
-      <%= record.quest_item.name %>
-      <%= record.goaldate %>
-      <%= record.besttime.strftime("%H:%M") %>
-    ">
+    <a href="<%= record.photourl.url(:large) %>" rel="lightbox" title="<%= record.description %>">
       <img src="<%= record.photourl.url(:thumb) %>">
-      <p>
-          <%= record.quest_item.name %>
-          <%= record.goaldate %>
-          <%= record.besttime.strftime("%H:%M") %>
-      </p>
+      <p class="img-date"><%= record.quest_item.name %> <%= record.goaldate %> <%= record.besttime.strftime("%H:%M") %></p>
+      <p class="img-description"><%= record.description %></p>
     </a>
     </div>
 
