@@ -269,9 +269,9 @@ header#header {
 #content-area {
   position: relative;
   z-index: 700;
-  padding: 20px 10px 30px 0;
+  padding: 20px 0 30px 0;
   margin-top: 20px;
-  border-bottom: 5px dashed #fff;
+  border-bottom: 1px dashed #333;
   min-height: 800px;
   background: #000000;
   background: rgba(0, 0, 0, 0.6);
@@ -283,6 +283,12 @@ header#header {
 }
 
 /* Calendar */
+
+.calendar {
+  float: left;
+  width: 100%;
+  padding-right: 10px;
+}
 
 .day-quest-time {
   input[type="submit"] {
@@ -340,7 +346,7 @@ header#header {
 .winners-images {
   margin-top: 30px;
   text-align: center;
-  border-top: 1px solid #333;
+  border-top: 1px dashed #333;
   h2 {
     color: #fff;
     margin: 15px 0;
@@ -353,6 +359,9 @@ header#header {
     }
     p {
       margin: 10px 0 5px 0;
+    }
+    img {
+      border-radius: 25px;
     }
   }
 }
@@ -653,8 +662,8 @@ input.btn.btn-success.btn-lg {
     text-align: left;
   }
 
-  #content-area {
-    padding: 20px 0 30px 0;
+  .calendar {
+    padding-right: 0;
   }
 
   #content {
@@ -760,8 +769,8 @@ input.btn.btn-success.btn-lg {
     padding-top: 1.2%;
   }
 
-  #content-area {
-    padding: 20px 0 30px 0;
+  .calendar {
+    padding-right: 0;
   }
 
   #content {
@@ -863,8 +872,8 @@ input.btn.btn-success.btn-lg {
     padding-top: 1.2%;
   }
 
-  #content-area {
-    padding: 20px 0 30px 0;
+  .calendar {
+    padding-right: 0;
   }
 
   #content {
