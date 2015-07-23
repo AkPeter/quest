@@ -17,8 +17,6 @@ class Admin::QuestItemsController < AdminController
   # GET /quest_items/signin
   def new
     @quest_item = QuestItem.new
-
-
   end
 
   # GET /quest_items/1/edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712172337) do
+ActiveRecord::Schema.define(version: 20150722213109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,17 @@ ActiveRecord::Schema.define(version: 20150712172337) do
   create_table "quest_statuses", force: :cascade do |t|
     t.string "name", null: false
   end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "quest_item_id", null: false
+    t.integer  "user_id",       null: false
+    t.string   "content"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "responses", ["quest_item_id"], name: "index_responses_on_quest_item_id", using: :btree
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id", using: :btree
 
   create_table "ticket_statuses", force: :cascade do |t|
     t.string "name", null: false

@@ -55,9 +55,10 @@ class MainController < ApplicationController
       end
 
       @wrappers[day] << {:price => price, :width => brothers_ticket_count * ticket_width_percent}
+
     end
 
-    # расписание сеансов в вёрстку!
+    # расписание сеансов в вёрстку! уже не нужно ёптат, вот так вот
     @timetable = []
     start_time = DateTime.now.beginning_of_day
     session_length = QuestItem.find(current_quest).session_length
@@ -68,7 +69,9 @@ class MainController < ApplicationController
 
     @picturesofwinners = Picturesofwinner.all
 
-    @tickets_view_percent = tickets_view_percent session['qid']
+    @responses = Response.all.where('quest_item_id=?', current_quest)
+
+    @tickets_view_percent = tickets_view_percent current_quest
 
   end
 end

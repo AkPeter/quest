@@ -18,6 +18,11 @@
           <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@telegus.ru</p>
           <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <a class="link-to-footer" href="#footer" title="Контактная информация и как добраться">Москва, ул. Дворникова 7</a></p>
           <p><a href="#content-area" class="btn btn-danger reserve-button">Зарезервировать билет</a></p>
+        <p>
+            <% if current_user %>
+                <%= link_to 'Оставить отзыв', responses_new_path, class: 'btn btn-danger reserve-button' %>
+            <% end %>
+        </p>
       </div>
     </div>
 
@@ -121,6 +126,8 @@
 
   <footer id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <!-- footer begin -->
+    <%= render :template => 'responses/index' if @responses.any? %>
+
     <div class="bottom-info col-lg-12">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +7 (499) 322-04-28</div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@telegus.ru</div>

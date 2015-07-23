@@ -30,7 +30,7 @@ class RobokassaController < ApplicationController
     out_sum = ticket.price.to_f
     inv_id = ticket.id.to_i
 
-    if params[:OutSum].to_f >= out_sum  && params[:InvId].to_f == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
+    if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
       #котирую оплату пользователем и я говорю Окей .)
       render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
     else
@@ -45,6 +45,11 @@ class RobokassaController < ApplicationController
     @ticket = current_ticket
     session[:tid] = nil
     UserMailer.ticket_purchased(@ticket).deliver_now
+
+    # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
+    time2remind = @ticket.dt.to_datetime - TicketsController::UserRemindBefore
+    TicketUnreserveJob.set(wait_until: time2remind).perform_later(tid) if DateTime.now < time2remind
+
   end
 
   def abort_mission

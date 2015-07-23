@@ -76,6 +76,17 @@ img, li { vertical-align:top}
   background-color: #000;
 }
 
+.responses {
+  color: forestgreen;
+  p {
+    color: #ffcc33;
+    font-weight: bold;
+    font-style: italic;
+    font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+    font-size: 18px;
+  }
+}
+
 h1 {
   font-size: 32px;
   margin: 10px 0;

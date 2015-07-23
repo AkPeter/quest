@@ -28,4 +28,9 @@ class UserMailer < ApplicationMailer
     mail(to: ticket.user.email, subject: 'Дворников - Квестов. Поздравляем.')
   end
 
+  def ticket_remind(ticket)
+    @ticket = ticket
+    mail(to: ticket.user.email, subject: 'Дворников - Квестов. Скоро твой квест ! Не пропусти !')
+  end
+
 end

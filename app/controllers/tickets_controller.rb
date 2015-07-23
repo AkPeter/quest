@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   GenerationPeriod = 2.weeks
+  UserRemindBefore = 1.day
 
   include TicketsLib
 

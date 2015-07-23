@@ -1,0 +1,11 @@
+<div class="responses">
+    <h1>
+      Отзывы
+    </h1>
+
+    <% @responses.each do |response| %>
+        <p>
+            <%= response.created_at.strftime "%Y %m %d %H:%M" %> <%= response.user.name %> оставил запись : <%= response.content %>
+        </p>
+    <% end %>
+</div>

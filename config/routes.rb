@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'responses/new'
+  post 'responses' => 'responses#create'
+  get 'responses' => 'responses#index'
+
   namespace :admin do
     get 'main/index'
     resources :quest_items, :price_presets, :picturesofwinners

@@ -1,6 +1,7 @@
 class QuestItem < ActiveRecord::Base
   belongs_to :quest_status
   has_many :picturesofwinners, dependent: :destroy
+  has_many :responses, dependent: :destroy
   has_many :price_presets, dependent: :destroy
   has_many :tickets, dependent: :destroy
 
