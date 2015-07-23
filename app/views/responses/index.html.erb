@@ -4,7 +4,7 @@
     </h2>
     <div class="responses-content col-xs-12">
         <% @responses.each do |response| %>
-          <div class="col-xs-4 responses-message">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 responses-message">
             <p class="user-response-name"><%= response.created_at.strftime "%Y %m %d %H:%M" %> | <%= response.user.name %></p>
             <p class="response-content-body"><%= response.content %></p>
           </div>

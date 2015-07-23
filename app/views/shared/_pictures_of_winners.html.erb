@@ -1,4 +1,4 @@
-<div class="winners-images col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+<div class="winners-images col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <h2>Победители</h2>
 
 <% @picturesofwinners.each do |record| %>
@@ -8,10 +8,10 @@
     :large    => ['600>',      :jpg, :quality => 88],
     :retina   => ['1200>',     :jpg, :quality => 100-->
 
-    <div class="winner-img col-lg-1 col-md-2 col-sm-3 col-xs-4">
+    <div class="winner-img col-lg-1 col-md-2 col-sm-6 col-xs-12">
     <a href="<%= record.photourl.url(:large) %>" rel="lightbox" title="<%= record.description %>">
       <img src="<%= record.photourl.url(:thumb) %>" class="img-responsive" alt="<%= record.description %>">
-      <p class="img-date"><%= record.quest_item.name %> <%= record.goaldate %> <%= record.besttime.strftime("%H:%M") %></p>
+      <p class="img-date"><%= record.goaldate %> <%= record.besttime.strftime("%H:%M") %></p>
       <p class="img-description"><%= record.description %></p>
     </a>
     </div>
