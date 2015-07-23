@@ -4,12 +4,17 @@
 
 .responses {
   color: #fff;
+  margin-top: 30px;
+  border-top: 1px solid #333;
   .responses-content {
     padding-top: 10px;
     padding-bottom: 10px;
+    .responses-message {
+      margin-bottom: 20px;
+    }
     .user-response-name {
-      font-size: 120%;
-      font-style: italic;
+      font-size: 110%;
+      color: darkmagenta;
     }
     .response-content-body {
       font-style: italic;
