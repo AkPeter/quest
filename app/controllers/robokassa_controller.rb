@@ -32,8 +32,7 @@ class RobokassaController < ApplicationController
 
   def paid_confirmed
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
-    tickets = Ticket.where('id=?', session[:tid])
-    # tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
+    tickets = Ticket.where('id=? and ticket_status_id=?', params[:InvId], 2)
     if tickets.any?
       ticket = tickets.first
 
