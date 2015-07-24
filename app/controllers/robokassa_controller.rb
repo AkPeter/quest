@@ -48,6 +48,10 @@ class RobokassaController < ApplicationController
   end
 
   def paid_confirmed
+
+    render text: 'SHITHAPPENS'
+
+=begin
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
     tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
     if tickets.any?
@@ -66,6 +70,7 @@ class RobokassaController < ApplicationController
         render text: 'SHITHAPPENS'
       end
     end
+=end
   end
 
   def transaction_confirmed
