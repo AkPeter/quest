@@ -40,7 +40,7 @@ class RobokassaController < ApplicationController
     if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
       render text: 'Right'
     else
-      render text: 'SHITHAPPENS'
+      render text: Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
     end
 =begin
 
