@@ -37,10 +37,10 @@ class RobokassaController < ApplicationController
     out_sum = ticket.price.to_f
     inv_id = ticket.id.to_i
 
-    if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}".upcase
+    if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == (Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}").upcase
       render text: 'Right'
     else
-      render text: Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}".upcase
+      render text: (Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}").upcase
     end
 =begin
 
