@@ -66,7 +66,6 @@ class RobokassaController < ApplicationController
         # резерв снимается по истечении времени резерва, но не тут
         render text: 'SHITHAPPENS'
       end
-    end
     else
       render text: 'SHITHAPPENS'
     end
