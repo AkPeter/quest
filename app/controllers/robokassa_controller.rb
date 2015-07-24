@@ -1,6 +1,5 @@
 class RobokassaController < ApplicationController
-  layout nil
-  layout 'application', :except => :view
+  layout false
 
   skip_before_action :verify_authenticity_token
   RESERVE_TIME = 15.minutes
