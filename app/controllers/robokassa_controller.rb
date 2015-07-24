@@ -28,11 +28,13 @@ class RobokassaController < ApplicationController
   end
 
   def try
+    _layout = false
+
     require 'uri'
     require 'net/http'
     setup = {
         :smsru => {
-            :uri => 'http://lockinroom.ru/',
+            :uri => 'http://lockinroom.ru/paid_confirmed',
             :params => {
                 :api_id => Rails.application.secrets.sms_ru_api_key,
             }
@@ -46,6 +48,7 @@ class RobokassaController < ApplicationController
   end
 
   def paid_confirmed
+    _layout = false
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
     tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
     if tickets.any?
@@ -57,19 +60,11 @@ class RobokassaController < ApplicationController
       if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
         #котирую оплату пользователем и я говорю Окей .)
         session[:ptid] = ticket.id
-        @answer = ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
-        respond_with @answer do |format|
-          format.json { render :layout => false, :text => @answer.to_json }
-        end
-        # render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
+        render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
       else
         # 8======>
         # резерв снимается по истечении времени резерва, но не тут
-        # render text: 'SHITHAPPENS'
-        @answer = 'SHITHAPPENS'
-        respond_with @answer do |format|
-          format.json { render :layout => false, :text => @answer.to_json }
-        end
+        render text: 'SHITHAPPENS'
       end
     end
   end
