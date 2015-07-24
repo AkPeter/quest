@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def current_user
     if session[:uid]&&User.any?
       users = User.where('id=?', session[:uid])
-      users.any? ? users.first : nil
+      @current_user = users.any? ? users.first : nil
     end
   end
   helper_method :current_user
