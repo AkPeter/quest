@@ -54,8 +54,9 @@ class RobokassaController < ApplicationController
     else
       render text: 'SHITHAPPENS'
     end
-  end
 =end
+  end
+
 
   def transaction_confirmed
     # всё прошло успешно - можно потрепать пользователя по плечу
