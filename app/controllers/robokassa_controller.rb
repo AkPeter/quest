@@ -33,7 +33,7 @@ class RobokassaController < ApplicationController
 
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
     @ticket = current_ticket
-    tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
+    # tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
     if @ticket
       out_sum = @ticket.price.to_f
       inv_id = @ticket.id.to_i
