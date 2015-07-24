@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   post 'transaction_confirmed' => 'robokassa#transaction_confirmed'
   post 'abort_mission' => 'robokassa#abort_mission'
 
+  get 'robotry' => 'robokassa#try'
+
   get 'main/index'
 
   # get 'tickets/:dt0/price_mass_update(.:format)'
