@@ -29,7 +29,7 @@ class RobokassaController < ApplicationController
 
   def paid_confirmed
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
-    ticket = Ticket.find(current_ticket.id)
+    ticket = current_ticket
 
     out_sum = ticket.price.to_f
     inv_id = ticket.id.to_i
