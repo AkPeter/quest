@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :quest_items, :price_presets, :picturesofwinners
     get 'manage_tickets/price'
     post 'manage_tickets/price_update'
+    delete 'responses/:id' => 'responses#destroy', as: 'response'
   end
 
   post 'sms/send'

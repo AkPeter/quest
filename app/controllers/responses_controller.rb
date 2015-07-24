@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_action :set_response, only: [:update, :destroy]
+  before_action :set_response, only: [:update]
 
   def index
     @responses = Response.all.where('quest_item_id=?', current_quest)
@@ -34,16 +34,6 @@ class ResponsesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /responses/1
-  # DELETE /responses/1.json
-  def destroy
-    @response.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Отзыв удалён' }
-      format.json { head :no_content }
     end
   end
 

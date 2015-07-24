@@ -7,6 +7,9 @@
           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 responses-message">
             <p class="user-response-name"><%= response.created_at.strftime "%Y %m %d %H:%M" %> | <%= response.user.name %></p>
             <p class="response-content-body"><%= response.content %></p>
+            <%  if current_user&&current_user.admin %>
+                <p class="response-content-body"><%= link_to 'Удалить', [:admin, response], method: :delete, data: { confirm: 'Точно ?' }, class: "btn btn-danger btn-xs" %></p>
+            <% end %>
           </div>
         <% end %>
     </div>
