@@ -8,7 +8,7 @@
             <p class="user-response-name">
               <%= response.created_at.strftime "%Y %m %d %H:%M" %> | <%= response.user.name %>
               <%  if current_user&&current_user.admin %>
-                  <%= link_to 'X', [:admin, response], method: :delete, data: { confirm: 'Точно ?' }, class: "btn btn-danger btn-xs" %>
+                  <%= link_to 'x', [:admin, response], method: :delete, data: { confirm: 'Точно ?' }, class: "response-btn-delete" %>
               <% end %></p>
             <p class="response-content-body"><%= response.content %></p>
 
