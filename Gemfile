@@ -33,7 +33,9 @@ gem 'lightbox2-rails'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 
-gem 'russian_holidays_checkup', '~> 0.1.8'
+# мои два гема .)
+gem 'russian_holidays_checkup', '~> 0.2.1'
+gem 'russland_sms'
 
 gem 'i18n'
 gem 'russian', '~> 0.6.0'

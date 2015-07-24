@@ -1,4 +1,6 @@
 class MainController < ApplicationController
+
+
   def index
     require 'russian_holidays_checkup'
     # сексуальное разбитие по дням для последующего потока в вёрстку

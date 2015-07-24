@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  SignInURL = 'http://lockinroom.ru'
+  Domain = 'lockinroom.ru'
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
