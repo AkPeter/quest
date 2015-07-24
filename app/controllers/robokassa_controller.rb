@@ -1,5 +1,5 @@
 class RobokassaController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   RESERVE_TIME = 15.minutes
 
   def index
