@@ -1,4 +1,6 @@
 class RobokassaController < ApplicationController
+  layout nil
+
   skip_before_action :verify_authenticity_token
   RESERVE_TIME = 15.minutes
 
@@ -48,7 +50,6 @@ class RobokassaController < ApplicationController
   end
 
   def paid_confirmed
-    _layout = false
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
     tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
     if tickets.any?
