@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   post 'ticket/reserve' => 'tickets#reserve'
 
   post 'paid_confirmed' => 'robokassa#paid_confirmed'
-  get 'transaction_confirmed' => 'robokassa#transaction_confirmed'
+  post 'transaction_confirmed' => 'robokassa#transaction_confirmed'
   post 'abort_mission' => 'robokassa#abort_mission'
 
   get 'main/index'

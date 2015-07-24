@@ -36,6 +36,7 @@ class RobokassaController < ApplicationController
 
     if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
       #котирую оплату пользователем и я говорю Окей .)
+      session[:ptid] = ticket.id
       render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
     else
       # 8======>
@@ -47,9 +48,10 @@ class RobokassaController < ApplicationController
   def transaction_confirmed
     # всё прошло успешно - можно потрепать пользователя по плечу
     # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
-    if current_ticket&&current_ticket.id == 3
-      @ticket = current_ticket
+    if purshased_ticket
+      @ticket = purshased_ticket
       session[:tid] = nil
+      session[:ptid] = nil
       UserMailer.ticket_purchased(@ticket).deliver_now
 
       # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )

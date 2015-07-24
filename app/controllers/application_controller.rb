@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_ticket
 
+  def purshased_ticket
+    if current_user
+      tickets = Ticket.where('id=? and ticket_status_id=?', session[:ptid], 3)
+      @purshased_ticket = tickets.any? ? tickets.first : nil
+    end
+  end
+  helper_method :purshased_ticket
+
   def selected_ticket
     tickets = Ticket.where('id=? and ticket_status_id=?', session[:tid], 1)
     @selected_ticket = tickets.any? ? tickets.first : nil
