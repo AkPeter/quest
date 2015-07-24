@@ -10,6 +10,9 @@
             <%  if current_user&&current_user.admin %>
                 <p class="response-content-body"><%= link_to 'Удалить', [:admin, response], method: :delete, data: { confirm: 'Точно ?' }, class: "btn btn-danger btn-xs" %></p>
             <% end %>
+            <%  if current_user&&current_user.id == response.user_id %>
+
+            <% end %>
           </div>
         <% end %>
     </div>

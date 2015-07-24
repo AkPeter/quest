@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   get 'responses/new'
   post 'responses' => 'responses#create'
   get 'responses' => 'responses#index'
+  get 'responses' => 'responses#index'
+  patch  'responses/:id' => 'responses#update'
+  put    'responses/:id' => 'responses#update'
+  get    'responses/:id/edit' => 'responses#edit', as: 'edit_response'
+
 
   namespace :admin do
     get 'main/index'

@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_action :set_response, only: [:update]
+  # before_action :set_response, only: [:edit, :update]
 
   def index
     @responses = Response.all.where('quest_item_id=?', current_quest)
@@ -21,6 +21,9 @@ class ResponsesController < ApplicationController
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
   end
 
   # PATCH/PUT /responses/1
