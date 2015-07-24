@@ -60,13 +60,17 @@ class RobokassaController < ApplicationController
     # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
     tickets = Ticket.where('id=? and ticket_status_id=?', params[:InvId].to_i, 3)
     if tickets.any?
-      session[:tid] = nil
-      session[:ptid] = nil
+      @ticket = tickets.first
+
       UserMailer.ticket_purchased(@ticket).deliver_now
 
       # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
       time2remind = @ticket.dt.to_datetime - TicketsController::UserRemindBefore
       TicketUserRemindJob.set(wait_until: time2remind).perform_later(@ticket.id, current_user.id) if DateTime.now < time2remind
+
+      session[:tid] = nil
+      session[:ptid] = nil
+
       redirect_to root_url
     else
       # маленький хакер ) иди оплачивай ! )
