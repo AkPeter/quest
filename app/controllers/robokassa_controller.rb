@@ -29,38 +29,19 @@ class RobokassaController < ApplicationController
 
   end
 
-  def try
-    require 'uri'
-    require 'net/http'
-    setup = {
-        :smsru => {
-            :uri => 'http://lockinroom.ru/paid_confirmed',
-            :params => {
-                :api_id => Rails.application.secrets.sms_ru_api_key,
-            }
-        }
-    }
-
-    uri = URI setup[:smsru][:uri]
-    uri.query = URI.encode_www_form setup[:smsru][:params]
-
-    Net::HTTP.get_response uri
-  end
-
   def paid_confirmed
 
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
+    @ticket = current_ticket
     tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
-    if tickets.any?
-      ticket = tickets.first
-
-      out_sum = ticket.price.to_f
-      inv_id = ticket.id.to_i
+    if @ticket
+      out_sum = @ticket.price.to_f
+      inv_id = @ticket.id.to_i
 
       if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
         #котирую оплату пользователем и я говорю Окей .)
-        session[:ptid] = ticket.id
-        render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
+        session[:ptid] = @ticket.id
+        render text: @ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
       else
         # 8======>
         # резерв снимается по истечении времени резерва, но не тут
