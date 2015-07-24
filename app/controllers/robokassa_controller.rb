@@ -42,7 +42,8 @@ class RobokassaController < ApplicationController
       if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}"
         #котирую оплату пользователем и я говорю Окей .)
         session[:ptid] = ticket.id
-        render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
+        # render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
+        render text: 'GOOD !'
       else
         # 8======>
         # резерв снимается по истечении времени резерва, но не тут
