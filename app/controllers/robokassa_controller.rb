@@ -30,8 +30,6 @@ class RobokassaController < ApplicationController
   end
 
   def try
-    _layout = false
-
     require 'uri'
     require 'net/http'
     setup = {
