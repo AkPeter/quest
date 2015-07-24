@@ -33,6 +33,7 @@ class RobokassaController < ApplicationController
   def paid_confirmed
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
     render text: params[:InvId]
+=begin
     tickets = Ticket.where('id=? and ticket_status_id=?', params[:InvId], 2)
     if tickets.any?
       ticket = tickets.first
@@ -54,6 +55,7 @@ class RobokassaController < ApplicationController
       render text: 'SHITHAPPENS'
     end
   end
+=end
 
   def transaction_confirmed
     # всё прошло успешно - можно потрепать пользователя по плечу
