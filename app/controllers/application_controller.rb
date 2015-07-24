@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def current_ticket
     if current_user
       tickets = Ticket.where('user_id=? and ticket_status_id=?', session[:uid], 2)
-      @current_ticket = tickets.any? ? tickets.first : nil
+      tickets.any? ? tickets.first : nil
     end
   end
   helper_method :current_ticket
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def purshased_ticket
     if current_user
       tickets = Ticket.where('id=? and ticket_status_id=?', session[:ptid], 3)
-      @purshased_ticket = tickets.any? ? tickets.first : nil
+      tickets.any? ? tickets.first : nil
     end
   end
   helper_method :purshased_ticket
