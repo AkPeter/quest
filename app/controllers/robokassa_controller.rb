@@ -32,6 +32,7 @@ class RobokassaController < ApplicationController
 
   def paid_confirmed
     # пользователь оплатил в робокассе, надо сверить что он там оплатил
+    render text: params[:InvId]
     tickets = Ticket.where('id=? and ticket_status_id=?', params[:InvId], 2)
     if tickets.any?
       ticket = tickets.first
