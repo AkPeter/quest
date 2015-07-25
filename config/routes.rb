@@ -43,8 +43,8 @@ Rails.application.routes.draw do
   post 'abort_mission' => 'robokassa#abort_mission'
   get 'purchase_complete' => 'robokassa#purchase_complete'
   get 'purchase_aborted' => 'robokassa#purchase_aborted'
-  post 'ticket_cash_purchase' => 'ticket#ticket_cash_purchase'
-  get 'ticket_cash_purchase_complete' => 'ticket#ticket_cash_purchase_complete'
+  post 'ticket_cash_purchase' => 'tickets#ticket_cash_purchase'
+  get 'ticket_cash_purchase_complete' => 'tickets#ticket_cash_purchase_complete'
 
   get 'main/index'
 

@@ -5,7 +5,6 @@
   <p>Когда начало: <%= l(@ticket.dt.to_datetime, :format => "%A %d %B %H:%M") %></p>
   <p>Сколько я должен заплатить: <%= @ticket.price %> руб.</p>
   <p><%= render :partial => 'shared/ticket_reserve_prepaid' %></p>
-  <p class="robokassa">После нажатия кнопки "Приобрести" вы будете отправлены на страницу платежной системы Robokassa для завершения платежа.</p>
 
 <p>
     <!--https://merchant.roboxchange.com/Index.aspx-->
@@ -18,7 +17,7 @@
       <%= hidden_field_tag :SignatureValue,     @params[:signature_value] %>
       <%= hidden_field_tag :Culture,            @params[:culture] %>
 
-      <%= submit_tag :Приобрести, class: "btn btn-success" %>
+      <%= submit_tag 'Оплатить через Robokassa', class: "btn btn-success" %>
 
     <% end %>
 

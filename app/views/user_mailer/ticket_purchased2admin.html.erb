@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<%= @ticket.user.name %> приобрёл билет
+квест <%= @ticket.quest_item.name %>
+сеанс <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
+почта <%= @ticket.user.email %>
+телефон <%= @ticket.user.phone %>
+</body>
+</html>

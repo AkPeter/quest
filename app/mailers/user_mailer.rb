@@ -1,6 +1,11 @@
 class UserMailer < ApplicationMailer
   include SmsLib
 
+  def admins_mail
+    User.where(admin:true).pluck(:email)
+  end
+  helper_method :admins_mail
+
   def new_bee(user, password)
     @username = user.name
     @signin  = ApplicationController::SignInURL
@@ -36,7 +41,8 @@ class UserMailer < ApplicationMailer
 
     sms_ticket_purchased ticket if ticket.user.phone
 
-    mail(to: ticket.user.email, subject: "Ты приобрёл билет !")
+    mail(to: ticket.user.email, subject: "Ты приобрёл билет")
+    mail(to: admins_mail, subject: "#{ticket.user.name} приобрёл билет", :template_name => 'user_mailer/ticket_purchased2admin')
   end
 
   def ticket_remind(ticket)
