@@ -44,7 +44,7 @@ class UserMailer < ApplicationMailer
     sms_ticket_purchased ticket if ticket.user.phone
 
     mail(to: ticket.user.email, subject: "Ты приобрёл билет")
-    mail(to: admins_mail, subject: "#{ticket.user.name} приобрёл билет. #{pay_way}", :template_name => 'user_mailer/ticket_purchased2admin')
+    mail(to: admins_mail, subject: "#{ticket.user.name} приобрёл билет. #{pay_way}", :template_name => 'ticket_purchased2admin')
   end
 
   def ticket_remind(ticket)
