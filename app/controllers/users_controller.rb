@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   def create
     password = SecureRandom.hex(8)[0..7]
     @user = User.new(name: params[:name], email: params[:email], phone: params[:phone], password: password, admin: params[:email]=='shadows.of.unevenness@gmail.com')#consolut@yandex.ru
-
+    p @user
     respond_to do |format|
       if @user.save
+        p @user
         session[:uid] = @user.id
         UserMailer.new_bee(@user, password).deliver_now
         if Ticket.any?&&session[:tid]

@@ -14,9 +14,10 @@ class SessionController < ApplicationController
               redirect_to payment_url, notice: flash.first.msg
           end
         else
-          redirect_to personal_page_url, notice: 'Билет зарезервирован за Вами'
+          redirect_to personal_page_url
         end
       else
+        flash[:notice] = 'неправильный пароль, воспользуйтесь восстановлением пароля'
         render :template => 'users/signin', :locals => {:uid => @user.id}
       end
     else
@@ -25,8 +26,8 @@ class SessionController < ApplicationController
   end
 
   def logout
-    # session[:uid], session[:tid] = nil
     reset_session
     redirect_to root_url
   end
+
 end
