@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:uid]&&User.any?
-      users = User.where('id=?', session[:uid])
+      users = User.where(id: session[:uid])
       @current_user = users.any? ? users.first : nil
     end
   end
