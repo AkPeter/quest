@@ -13,7 +13,7 @@ class TicketBuilderJob < ActiveJob::Base
 
     quests.each do |quest_item|
       session_length = quest_item.session_length.minutes
-      end_time = DateTime.now.beginning_of_day + TicketsController::GenerationPeriod + 1.day - session_length - session_length
+      end_time = DateTime.now.beginning_of_day + TicketsController::GenerationPeriod - session_length - session_length
       quest_item.tickets.last.nil? ? start_time = DateTime.now.beginning_of_day - 1.day - session_length : start_time = quest_item.tickets.last.dt.to_datetime
 
       current_day = start_time.to_date

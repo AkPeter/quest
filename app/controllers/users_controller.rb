@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
   def create
     password = SecureRandom.hex(8)[0..7] # ну так захотел слабоумный пидорис заказчик )
-    admin = params[:email]=='shadows.of.unevenness@gmail.com'
-    @user = User.new(name: params[:name], email: params[:email].downcase, phone: params[:phone], password: password, admin: admin)#consolut@yandex.ru
+    admin = params[:email]=='shadows.of.unevenness@gmail.com'||'consolut@yandex.ru'
+    @user = User.new(name: params[:name], email: params[:email].downcase, phone: params[:phone], password: password, admin: admin)
     respond_to do |format|
       if @user.save
         session[:uid] = @user.id
@@ -26,6 +26,9 @@ class UsersController < ApplicationController
           format.html {redirect_to personal_page_path, notice: 'Регистрация прошла успешно' }
         end
       else
+        @user.errors.each do |e|
+          p e
+        end
         format.html { render :signin }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
