@@ -58,7 +58,7 @@ class RobokassaController < ApplicationController
     if tickets.any?
       ticket = tickets.first
 
-      UserMailer.ticket_purchased(ticket).deliver_now
+      UserMailer.ticket_purchased(ticket, false).deliver_now
 
       # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
       time2remind = ticket.dt.to_datetime - TicketsController::UserRemindBefore

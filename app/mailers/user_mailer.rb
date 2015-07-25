@@ -36,13 +36,15 @@ class UserMailer < ApplicationMailer
     mail(to: ticket.user.email, subject: "Резерв билета.")
   end
 
-  def ticket_purchased(ticket)
+  def ticket_purchased(ticket, anal)# анал - это когда покупают за анал .)
+    pay_way = anal ? 'оплатит НАЛИЧНЫМИ' : 'оплатил ROBOKASSA'
+
     @ticket = ticket
 
     sms_ticket_purchased ticket if ticket.user.phone
 
     mail(to: ticket.user.email, subject: "Ты приобрёл билет")
-    mail(to: admins_mail, subject: "#{ticket.user.name} приобрёл билет", :template_name => 'user_mailer/ticket_purchased2admin')
+    mail(to: admins_mail, subject: "#{ticket.user.name} приобрёл билет. #{pay_way}", :template_name => 'user_mailer/ticket_purchased2admin')
   end
 
   def ticket_remind(ticket)
