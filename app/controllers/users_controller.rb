@@ -9,22 +9,21 @@ class UsersController < ApplicationController
   end
   def create
     password = SecureRandom.hex(8)[0..7]
-    @user = User.new(name: params[:name], email: params[:email], phone: params[:phone], password: password, admin: params[:email]=='shadows.of.unevenness@gmail.com')#consolut@yandex.ru
-    p @user
+    admin = params[:email]=='shadows.of.unevenness@gmail.com'
+    @user = User.new(name: params[:name], email: params[:email], phone: params[:phone], password: password, admin: admin)#consolut@yandex.ru
     respond_to do |format|
       if @user.save
-        p @user
         session[:uid] = @user.id
         UserMailer.new_bee(@user, password).deliver_now
         if Ticket.any?&&session[:tid]
           case reserveTicket session[:tid]
             when  'root'
-              redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно'
+              format.html {redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно' }
             else
-              redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
+              format.html {redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами' }
           end
         else
-          redirect_to personal_page_path, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
+          format.html {redirect_to personal_page_path, notice: 'Регистрация прошла успешно' }
         end
       else
         format.html { render :signin }
@@ -32,13 +31,16 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       @user = current_user
       if @user.update(name: params['name'], phone: params['phone'], password: params['password'])
+        flash[:notice] = 'Личные данные успешно изменены'
         format.html { redirect_to action: 'personal_page' }
         format.json { head :no_content }
       else
+        flash[:notice] = 'Войдите на сайт'
         format.html { redirect_to signin_path }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
       end
       render :template => 'users/personal_page', locals: {admin: current_user.admin, tickets_count: @tickets.any?}
     else
-      redirect_to root_url
+      redirect_to root_url, notice: 'Зарегистрирйтесь'
     end
   end
 end
