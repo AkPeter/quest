@@ -2,6 +2,8 @@ module SmsLib
 
   def sms_new_bee(user, password)
     message = "твой пароль на #{ApplicationController::Domain} #{password}"
+    p 'sms sms_new_bee'
+    p message
     send_sms user.phone, message
   end
 
