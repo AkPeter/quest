@@ -7,6 +7,6 @@
     <li>начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
   </ul>
 
-</div>
+  <%= link_to 'вернуться на главную страницу', root_url %>
 
-<%= link_to 'вернуться на главную страницу', root_url %>
+</div>

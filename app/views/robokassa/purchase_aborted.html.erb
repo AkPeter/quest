@@ -7,7 +7,9 @@
     иди снова оплачивай username
   </p>
 
-  <%= button_to 'пробуй снова', payment_url %>
-  <%= button_to 'вернуться на главную страницу', root_url %>
+  <% if current_ticket %>
+    <%= link_to 'пробуй снова', payment_url %>
+  <% end %>
+  <%= link_to 'вернуться на главную страницу', root_url %>
 
 </div>
