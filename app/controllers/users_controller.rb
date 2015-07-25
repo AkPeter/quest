@@ -18,12 +18,12 @@ class UsersController < ApplicationController
         if Ticket.any?&&session[:tid]
           case reserveTicket session[:tid]
             when  'root'
-              format.html {redirect_to root_url}
+              redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно'
             else
-              format.html {redirect_to payment_url}
+              redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
           end
         else
-          format.html {redirect_to personal_page_path}
+          redirect_to personal_page_path, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
         end
       else
         format.html { render :signin }

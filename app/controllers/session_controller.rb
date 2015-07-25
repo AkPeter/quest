@@ -9,21 +9,18 @@ class SessionController < ApplicationController
         if session[:tid]
           case reserveTicket session[:tid]
             when  'root'
-              redirect_to root_url
+              redirect_to root_url, notice: flash.first.msg
             else
-              redirect_to payment_url
+              redirect_to payment_url, notice: flash.first.msg
           end
         else
-          redirect_to personal_page_url
+          redirect_to personal_page_url, notice: 'Билет зарезервирован за Вами'
         end
       else
         render :template => 'users/signin', :locals => {:uid => @user.id}
       end
     else
-      respond_to do |format|
-        format.html { redirect_to :back, notice: 'такого email нет в системе, зарегистрируйтесь' }
-        format.json { head :no_content }
-      end
+      redirect_to signin_path, notice: 'такого email нет в системе, зарегистрируйтесь'
     end
   end
 
