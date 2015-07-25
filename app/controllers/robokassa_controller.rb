@@ -1,5 +1,5 @@
 class RobokassaController < ApplicationController
-  layout false
+  layout false, only: [:paid_confirmed, :transaction_confirmed, :abort_mission]
 
   skip_before_action :verify_authenticity_token
   RESERVE_TIME = 15.minutes
@@ -42,7 +42,6 @@ class RobokassaController < ApplicationController
 
       if params[:OutSum].to_f >= out_sum  && params[:InvId].to_i == inv_id && params[:SignatureValue] == (Digest::MD5.new << "#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password2}").to_s.upcase
         #котирую оплату пользователем и я говорю Окей .)
-        session[:ptid] = ticket.id
         render text: ticket.update(ticket_status_id: 3) ? "OK#{inv_id}" : 'SHITHAPPENS'
       else
         # 8======>
@@ -69,7 +68,6 @@ class RobokassaController < ApplicationController
       TicketUserRemindJob.set(wait_until: time2remind).perform_later(@ticket.id, current_user.id) if DateTime.now < time2remind
 
       session[:tid] = nil
-      session[:ptid] = nil
 
       redirect_to root_url
     else

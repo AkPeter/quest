@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     end
   end
   def create
-    password = SecureRandom.hex(8)
-    @user = User.new(name: params[:name], email: params[:email], phone: params[:phone], password: password, admin: params[:email]=='shadows.of.unevenness@gmail.com')
+    password = SecureRandom.hex(8)[0..7]
+    @user = User.new(name: params[:name], email: params[:email], phone: params[:phone], password: password, admin: params[:email]=='shadows.of.unevenness@gmail.com')#consolut@yandex.ru
 
     respond_to do |format|
       if @user.save
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     end
   end
   def password_reset
-    new_password = SecureRandom.hex(8)
+    new_password = SecureRandom.hex(8)[0..7]
     @user = User.find(params[:uid])
     if @user.update(password: new_password)
       UserMailer.password_reset(@user, new_password).deliver_now
