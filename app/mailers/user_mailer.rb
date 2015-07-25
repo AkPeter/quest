@@ -1,6 +1,8 @@
 class UserMailer < ApplicationMailer
   include SmsLib
 
+  require 'russland_sms'
+
   def admins_mail
     User.where(admin:true).pluck(:email)
   end
