@@ -29,7 +29,7 @@ class UserMailer < ApplicationMailer
   def ticket_reserved(ticket)
     @signin  = ApplicationController::SignInURL
     @ticket = ticket
-    @reserve_time = RobokassaController::RESERVE_TIME
+    @reserve_time = Time.at(RobokassaController::RESERVE_TIME).strftime("%M")
 
     sms_ticket_reserved ticket if ticket.user.phone
 
