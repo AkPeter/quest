@@ -6,26 +6,20 @@ class RobokassaController < ApplicationController
 
   def prepay
     if current_ticket
-
       @ticket = current_ticket
       session[:tid] = @ticket.id
-      unless @ticket
-        redirect_to root_url
-      else
-        out_sum = @ticket.price.to_f
-        inv_id = @ticket.id.to_i
+      out_sum = @ticket.price.to_f
+      inv_id = @ticket.id.to_i
 
-        @params = {
-            :mrch_login => Rails.application.secrets.robokassa_mrch_login,
-            :out_sum => out_sum,
-            :inv_id => inv_id,
-            :desc => "#{@ticket.quest_item.name} начало #{l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M")}",
-            :password1 => Rails.application.secrets.robokassa_password1,
-            :signature_value => Digest::MD5.new << "#{Rails.application.secrets.robokassa_mrch_login}:#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password1}",
-            :culture => 'ru'
-        }
-      end
-
+      @params = {
+          :mrch_login => Rails.application.secrets.robokassa_mrch_login,
+          :out_sum => out_sum,
+          :inv_id => inv_id,
+          :desc => "#{@ticket.quest_item.name} начало #{l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M")}",
+          :password1 => Rails.application.secrets.robokassa_password1,
+          :signature_value => Digest::MD5.new << "#{Rails.application.secrets.robokassa_mrch_login}:#{out_sum}:#{inv_id}:#{Rails.application.secrets.robokassa_password1}",
+          :culture => 'ru'
+      }
     else
       redirect_to root_url, notice: 'резерв билета истёк'
     end
@@ -75,7 +69,7 @@ class RobokassaController < ApplicationController
       redirect_to action: :purchase_complete, id: ticket
     else
       # маленький хакер ) иди оплачивай ! )
-      redirect_to payment_url
+      redirect_to payment_url, notice: 'билет не оплачен'
     end
   end
 

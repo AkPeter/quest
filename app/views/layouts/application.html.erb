@@ -16,6 +16,10 @@
 </head>
 <body class="quest-page">
 
+<% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 <div class="super-header col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="head-menu-links col-lg-6 col-md-6 col-sm-4 col-xs-4">
     <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->

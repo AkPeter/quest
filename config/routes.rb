@@ -36,11 +36,15 @@ Rails.application.routes.draw do
 
   post 'ticket/reserve' => 'tickets#reserve'
 
+  # оплата
+
   post 'paid_confirmed' => 'robokassa#paid_confirmed'
   post 'transaction_confirmed' => 'robokassa#transaction_confirmed'
   post 'abort_mission' => 'robokassa#abort_mission'
   get 'purchase_complete' => 'robokassa#purchase_complete'
   get 'purchase_aborted' => 'robokassa#purchase_aborted'
+  post 'ticket_cash_purchase' => 'ticket#ticket_cash_purchase'
+  get 'ticket_cash_purchase_complete' => 'ticket#ticket_cash_purchase_complete'
 
   get 'main/index'
 
