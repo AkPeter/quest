@@ -16,9 +16,3 @@
 */
 
 @import 'bootstrap';
-
-.notice {
-    font-size: 20px;
-    font-weight: bold;
-    color:darkred;
-}

@@ -54,6 +54,23 @@ a:active, a:visited, a:focus {
   }
 }
 
+a.link-to-index {
+  color: #fff;
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  &:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+  &:focus {
+    color: darkred;
+    text-decoration: none;
+  }
+}
+
 input, select {    vertical-align:middle; outline:none;}
 textarea  {overflow:auto; outline:none;}
 ul { list-style:none;}
@@ -152,23 +169,22 @@ h1 {
   margin: 0;
   opacity: 0.5;
   }
-#bg-fon {
-  background-color: #0a1c34;
+
+.bg-color-front {
+  background-color: #140A11;
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   display: inline-block;
-  background-size: cover;
   padding: 0;
   margin: 0;
-  opacity: 0.5;
 }
 
 header#header {
   position: relative;
   z-index: 500;
-  padding-top: 200px;
+  margin-top: -380px;
 }
 
 .quest-info,
@@ -181,7 +197,7 @@ header#header {
 
 .quest-logo {
   text-align: center;
-  font-size: 40px;
+  font-size: 38px;
   text-transform: uppercase;
   font-weight: bolder;
   color: #fff;
@@ -189,7 +205,7 @@ header#header {
   .logo-block {
     border: 7px solid #fff;
     border-radius: 20px;
-    padding: 30px 0;
+    padding: 15px 0;
   }
   .small-logo-text {
     font-size: 95%;
@@ -198,9 +214,17 @@ header#header {
     color: #d43f3a;
   }
 }
+.logo-slogan {
+  padding: 10px 0 0 0;
+  font-size: 11px;
+  font-weight: 800;
+}
+.logo-block, .logo-slogan {
+  margin-left: 15px;
+}
 .quest-info {
   font-size: 150%;
-  margin: 60px 0 20px 0;
+  margin: 0 0 20px 0;
   font-weight: bold;
   h1 {
     font-weight: bold;
@@ -222,7 +246,7 @@ header#header {
 }
 .quest-h-adress {
   font-size: 16px;
-  margin: 0 0 30px 0;
+  margin: 40px 0 30px 0;
   font-weight: bold;
   color: #fff;
   text-align: right;
@@ -264,13 +288,22 @@ header#header {
   }
 }
 
+/* Notice */
+
+#notice, .notice {
+  color: red;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid red;
+}
+
 /* Content */
 
 #content-area {
   position: relative;
   z-index: 700;
   padding: 20px 0 30px 0;
-  margin-top: 20px;
   border-bottom: 1px dashed #333;
   min-height: 800px;
   background: #000000;
@@ -370,6 +403,37 @@ header#header {
   font-size: 80%;
 }
 
+/* Slider */
+
+.test-slider {
+  height: 850px;
+  position: relative !important;
+  z-index: 30;
+  background-color: #0a1c34;
+  .item {
+    width: 100%;
+    margin: 0;
+    height: 850px;
+    background-size: cover;
+    background-position: top center;
+  }
+  .item-1 {
+    background-image: image-url('bg-fon.jpg');
+  }
+  .item-2 {
+    background-image: image-url('bg-fon-1.jpg');
+  }
+  .item-3 {
+    background-image: image-url('bg-fon-2.jpg');
+  }
+  .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+    top: 36%;
+  }
+  .carousel-control:focus, .carousel-control:hover {
+    background-color: transparent !important;
+  }
+}
+
 /* Signin */
 
 .content-z-top {
@@ -380,7 +444,7 @@ header#header {
 .auth-block {
   padding-bottom: 20px;
   padding-top: 50px;
-  margin-top: 120px;
+  margin-top: 160px;
   color: #fff;
   border-radius: 10px;
   background: #000000;
@@ -637,6 +701,24 @@ input.btn.btn-success.btn-lg {
 
 @media (max-width: 1200px) {
 
+  header#header {
+    position: relative;
+    z-index: 500;
+    margin-top: -420px;
+  }
+
+  /* Slider */
+
+  .test-slider {
+    height: 800px;
+    .item {
+      height: 800px;
+    }
+    .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+      top: 30%;
+    }
+  }
+
   .another-quest-info {
     margin: 15px 15px 55px 15px;
     padding: 10px 20px 20px 20px;
@@ -649,12 +731,28 @@ input.btn.btn-success.btn-lg {
     }
   }
 
+  .auth-block {
+    margin-top: 160px;
+  }
+
 }
 
 @media (max-width: 992px) {
 
   header#header {
-    padding-top: 130px;
+    position: relative;
+    z-index: 500;
+    margin-top: -570px;
+  }
+
+  .test-slider {
+    height: 800px;
+    .item {
+      height: 800px;
+    }
+    .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+      top: 21%;
+    }
   }
 
   .info-quest-warning {
@@ -697,10 +795,6 @@ input.btn.btn-success.btn-lg {
     .week-day, .day-month { display: inline-block; width: auto; }
   }
 
-  .quest-text {
-    text-align: center;
-  }
-
   .another-quest-info {
     margin: 15px 15px 55px 15px;
     padding: 10px 20px 20px 20px;
@@ -741,7 +835,6 @@ input.btn.btn-success.btn-lg {
   }
 
   .quest-h-adress {
-    text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
     p {
@@ -753,12 +846,25 @@ input.btn.btn-success.btn-lg {
     margin: 0 0 20px 0;
   }
 
+  .auth-block {
+    margin-top: 160px;
+  }
+
 }
 
 @media (max-width: 768px) {
 
+  .super-header {
+    padding: 0;
+  }
+
   header#header {
     padding-top: 130px;
+    margin-top: 100px;
+  }
+
+  .test-slider, .bg-color-front {
+    display: none;
   }
 
   .info-quest-warning {
@@ -769,6 +875,10 @@ input.btn.btn-success.btn-lg {
   .logo-block {
     font-size: 80%;
     padding-top: 1.2%;
+  }
+
+  .logo-block, .logo-slogan {
+    margin-right: 15px;
   }
 
   .calendar {
@@ -858,12 +968,29 @@ input.btn.btn-success.btn-lg {
     margin: 0 0 20px 0;
   }
 
+  .auth-block {
+    margin-top: 220px;
+  }
+
+  #bg-img {
+    background-position: center;
+  }
+
 }
 
 @media (max-width: 520px) {
 
+  .test-slider, .bg-color-front {
+    display: none;
+  }
+
+  .super-header {
+    padding: 0;
+  }
+
   header#header {
-    padding-top: 130px;
+    padding-top: 200px;
+    margin-top: 100px;
   }
 
   .info-quest-warning {
@@ -874,6 +1001,10 @@ input.btn.btn-success.btn-lg {
   .logo-block {
     font-size: 80%;
     padding-top: 1.2%;
+  }
+
+  .logo-block, .logo-slogan {
+    margin-right: 15px;
   }
 
   .calendar {
@@ -961,6 +1092,14 @@ input.btn.btn-success.btn-lg {
 
   .quest-info {
     margin: 0 0 20px 0;
+  }
+
+  .auth-block {
+    margin-top: 220px;
+  }
+
+  #bg-img {
+    background-position: center;
   }
 
 }

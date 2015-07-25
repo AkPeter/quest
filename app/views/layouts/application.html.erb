@@ -16,26 +16,15 @@
 </head>
 <body class="quest-page">
 
-<% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-<% end -%>
-
 <div class="super-header col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="head-menu-links col-lg-6 col-md-6 col-sm-4 col-xs-4">
+
+  <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-xs-8 head-menu-auth">
     <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->
-    <%= link_to root_url, class: 'user-auth' do %>
-        <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span><br>Главная</p>
-    <% end %>
     <% if current_user&&current_user.admin %>
         <%= link_to admin_main_index_url, class: 'user-auth' do %>
             <p><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><br>Администрирование</p>
         <% end %>
     <% end %>
-
-  </div>
-
-  <div class="head-menu-auth col-lg-6 col-md-6 col-sm-8 col-xs-8">
-    <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->
     <% unless current_user %>
         <%= link_to signin_url, class: 'user-auth' do %>
             <p><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><br>Вход / Регистрация</p>
@@ -49,10 +38,19 @@
         <% end %>
     <% end %>
   </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 quest-logo">
+    <%= link_to root_url, class: 'link-to-index' do %>
+        <div class="logo-block">
+          <span class="small-logo-text">Lock</span><span class="magenta-text">In</span>Room
+        </div>
+    <% end %>
+        <div class="content-center logo-slogan">Квесты в реальности на Авиамоторной</div>
+  </div>
+
 </div>
 
 <div id="bg-img" class="page-bg"></div>
-<div id="bg-fon" class="page-bg-fon"></div>
 
 <div id="wrap-area" class="wrap">
   <div class="content-z-top">
