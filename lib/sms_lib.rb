@@ -2,8 +2,6 @@ module SmsLib
 
   def sms_new_bee(user, password)
     message = "твой пароль на #{ApplicationController::Domain} #{password}"
-    p 'sms sms_new_bee'
-    p message
     send_sms user.phone, message
   end
 
@@ -13,7 +11,7 @@ module SmsLib
   end
 
   def sms_ticket_reserved(ticket)
-    message = "билет на квест #{ticket.quest_item.name} сеанс #{l(ticket.dt.to_datetime, :format => "%d %B %A %H:%M")} зарезервирован. время резерва #{RobokassaController::RESERVE_TIME} минут"
+    message = "билет на квест #{ticket.quest_item.name} сеанс #{l(ticket.dt.to_datetime, :format => "%d %B %A %H:%M")} зарезервирован. время резерва #{Time.at(RobokassaController::RESERVE_TIME).strftime("%M")} минут"
     send_sms ticket.user.phone, message
   end
 
@@ -32,7 +30,7 @@ module SmsLib
   def send_sms(recepient_10dgt, message)
     require 'russland_sms'
 
-    message.sms recepient_10dgt
+    message.to_s.sms recepient_10dgt
   end
 
 end
