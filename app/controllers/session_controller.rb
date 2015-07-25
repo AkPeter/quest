@@ -9,11 +9,14 @@ class SessionController < ApplicationController
         if session[:tid]
           case reserveTicket session[:tid]
             when  'root'
-              redirect_to root_url, notice: flash.first.msg
+              flash.keep
+              redirect_to root_url
             else
-              redirect_to payment_url, notice: flash.first.msg
+              flash.keep
+              redirect_to payment_url
           end
         else
+          flash.keep
           redirect_to personal_page_url
         end
       else
@@ -27,6 +30,7 @@ class SessionController < ApplicationController
 
   def logout
     reset_session
+    flash[:notice] = 'Заходите ещё !'
     redirect_to root_url
   end
 

@@ -19,6 +19,7 @@ module TicketsLib
         UserMailer.ticket_reserved(ticket).deliver_now
         # снаряжаем фоновую задачу правильным образом !
         TicketUnreserveJob.set(wait_until: DateTime.now + RobokassaController::RESERVE_TIME).perform_later(tid, session[:uid])
+        flash[:notice] = 'Билет успешно зарезервирован'
         'payment'
       else
         flash[:notice] = 'Потеря связи, зарезервируйте билет повторно'
