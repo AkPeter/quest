@@ -3,7 +3,7 @@
   <h1>Регистрация и оплата</h1>
 
   <% if @ticket %>
-      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 selected-block">
+      <div class="col-lg-12 col-md-12col-sm-12 col-xs-12 selected-block">
         <div class="col-xs-6">
           <h3>Вами выбран билет на квест <%= @ticket.quest_item.name %></h3>
         </div>
@@ -14,16 +14,19 @@
       </div>
       <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 prepaid-message content-center">После входа вы будете перенаправлены на страницу оплаты в системе РОБОКАССА</div>
   <% end %>
+  <% flash.each do |name, msg| -%>
+    <div class="col-lg-12 col-md-12col-sm-12 col-xs-12">
+      <%= content_tag :div, msg, class: name %>
+    </div>
+  <% end -%>
 
-  <div class="row">
     <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 signin-block">
       <%= render :partial => 'shared/signin' %>
       <%= render :partial => 'shared/generate_new_password', :locals => {:uid => local_assigns.fetch(:uid)} if local_assigns.has_key? :uid %>
-      <p id="notice"><%= notice %></p>
     </div>
     <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 payment-block">
       <%= render :partial => 'shared/registration' %>
     </div>
-  </div>
+
 
 </div>
