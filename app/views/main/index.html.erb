@@ -35,6 +35,12 @@
 
   <header id="header" class="col-xs-12">
 
+    <% flash.each do |name, msg| -%>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <%= content_tag :div, msg, class: name %>
+        </div>
+    <% end -%>
+
     <div class="quest-info col-lg-8 col-md-8 col-sm-7 col-xs-12">
       <div class="col-lg-2 col-md-2 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-4 col-xs-offset-4 quest-img">
         <%= image_tag('x-men-icon.png') %>
