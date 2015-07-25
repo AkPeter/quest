@@ -1,0 +1,36 @@
+<h1>
+  Зарегестрированные пользователи
+</h1>
+
+<table class="table">
+  <tr>
+    <th>
+      Имя
+    </th>
+    <th>
+      Почта
+    </th>
+    <th>
+      Телефон
+    </th>
+    <th>
+      Дата регистрации
+    </th>
+  </tr>
+  <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <%= user.phone %>
+        </td>
+        <td>
+          <%= l(user.created_at.to_datetime, :format => "%d %B %Y %A %H:%M:%S") %>
+        </td>
+      </tr>
+  <% end %>
+</table>

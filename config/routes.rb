@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'main/index'
+    get 'main/users_show'
     resources :quest_items, :price_presets, :picturesofwinners
     get 'manage_tickets/price'
     post 'manage_tickets/price_update'
