@@ -2,7 +2,7 @@ class SessionController < ApplicationController
   include TicketsLib
 
   def signin
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:email].downcase)
     if @user
       if @user.authenticate(params[:password])
         session[:uid] = @user.id
