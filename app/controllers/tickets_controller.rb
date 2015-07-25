@@ -15,6 +15,8 @@ class TicketsController < ApplicationController
 
     if ticket
         if ticket.update(ticket_status_id: 3)
+          UserMailer.ticket_purchased(ticket).deliver_now
+
           redirect_to action: :ticket_cash_purchase_complete, id: ticket
         else
           redirect_to payment_url, notice: 'проблемы со связью, попробуйте оплатить ещё раз'
