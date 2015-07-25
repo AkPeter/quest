@@ -21,6 +21,7 @@ module TicketsLib
         TicketUnreserveJob.set(wait_until: DateTime.now + RobokassaController::RESERVE_TIME).perform_later(tid, session[:uid])
         'payment'
       else
+        flash[:notice] = 'Потеря связи, зарезервируйте билет повторно'
         'root'
       end
     else
