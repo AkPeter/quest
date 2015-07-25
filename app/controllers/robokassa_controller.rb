@@ -65,7 +65,7 @@ class RobokassaController < ApplicationController
 
       session[:tid] = nil
 
-      redirect_to action: :purchase_complete, ticket: ticket
+      redirect_to action: :purchase_complete, id: ticket
     else
       # маленький хакер ) иди оплачивай ! )
       redirect_to payment_url
@@ -77,8 +77,11 @@ class RobokassaController < ApplicationController
     redirect_to action: :purchase_aborted
   end
 
-  def purchase_complete(ticket)
-    @ticket = ticket
+  def purchase_complete
+    tickets = Ticket.where('id=?', params[:id].to_i)
+    if tickets.any?
+      @ticket = tickets.first
+    end
   end
 
   def purchase_aborted
