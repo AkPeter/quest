@@ -16,6 +16,11 @@ class TicketsController < ApplicationController
     if ticket
         if ticket.update(ticket_status_id: 3)
           UserMailer.ticket_purchased(ticket, true).deliver_now
+
+          # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
+          time2remind = ticket.dt.to_datetime - TicketsController::UserRemindBefore
+          TicketUserRemindJob.set(wait_until: time2remind).perform_later(ticket.id, current_user.id) if DateTime.now < time2remind
+
           flash[:notice] = 'Билет выкуплен, с Вами свяжуться по телефону'
           redirect_to action: :ticket_cash_purchase_complete, id: ticket
         else
