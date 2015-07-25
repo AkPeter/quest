@@ -10,6 +10,13 @@
 
 <%= form_tag('user_upd', method: :post) do %>
 <div class="row">
+
+  <script type="text/javascript">
+      jQuery(function($){
+          $("#phone").mask("+7 (999) 999-9999");
+      });
+  </script>
+
     <div class="field col-lg-3">
     Ваше Имя Фамилия <%= text_field_tag :name, @user.name, class: "form-control" %>
     </div>
@@ -17,7 +24,7 @@
     Ваша почта <div class="user-mail-info"><%= @user.email %></div>
     </div>
     <div class="field col-lg-3">
-    Ваш телефон <%= text_field_tag :phone, @user.phone, class: "form-control" %>
+    Ваш телефон <%= text_field_tag :phone, @user.phone, type: "text", class: "form-control", id: "phone", placeholder: "Ваш телефон" %>
     </div>
     <div class="field col-lg-3">
     Пароль <%= text_field_tag :password, nil, class: "form-control" %>
