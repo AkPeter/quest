@@ -39,8 +39,8 @@ Rails.application.routes.draw do
   post 'paid_confirmed' => 'robokassa#paid_confirmed'
   post 'transaction_confirmed' => 'robokassa#transaction_confirmed'
   post 'abort_mission' => 'robokassa#abort_mission'
-
-  get 'robotry' => 'robokassa#try'
+  get 'purchase_complete' => 'robokassa#purchase_complete'
+  get 'purchase_aborted' => 'robokassa#purchase_aborted'
 
   get 'main/index'
 

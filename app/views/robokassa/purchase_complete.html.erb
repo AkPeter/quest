@@ -1,0 +1,12 @@
+<div class="auth-block content-z-top col-lg-offset-3 col-lg-6">
+
+  <p>билет куплен</p>
+
+  <ul>
+    <li>квест <%= @ticket.quest_item.name %></li>
+    <li>начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
+  </ul>
+
+</div>
+
+<%= link_to 'вернуться на главную страницу', root_url %>

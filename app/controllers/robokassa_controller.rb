@@ -4,10 +4,6 @@ class RobokassaController < ApplicationController
   skip_before_action :verify_authenticity_token
   RESERVE_TIME = 15.minutes
 
-  def index
-    # session[:tid] = nil
-  end
-
   def prepay
     @ticket = current_ticket
     session[:tid] = @ticket.id
@@ -59,17 +55,17 @@ class RobokassaController < ApplicationController
     # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
     tickets = Ticket.where('id=? and ticket_status_id=?', params[:InvId].to_i, 3)
     if tickets.any?
-      @ticket = tickets.first
+      ticket = tickets.first
 
-      UserMailer.ticket_purchased(@ticket).deliver_now
+      UserMailer.ticket_purchased(ticket).deliver_now
 
       # снаряжаем фоновую задачу правильным образом ! ну и рассылка будет если ещё не поздно рассылать )
-      time2remind = @ticket.dt.to_datetime - TicketsController::UserRemindBefore
-      TicketUserRemindJob.set(wait_until: time2remind).perform_later(@ticket.id, current_user.id) if DateTime.now < time2remind
+      time2remind = ticket.dt.to_datetime - TicketsController::UserRemindBefore
+      TicketUserRemindJob.set(wait_until: time2remind).perform_later(ticket.id, current_user.id) if DateTime.now < time2remind
 
       session[:tid] = nil
 
-      redirect_to root_url
+      redirect_to action: :purchase_complete, ticket: ticket
     else
       # маленький хакер ) иди оплачивай ! )
       redirect_to payment_url
@@ -77,8 +73,16 @@ class RobokassaController < ApplicationController
   end
 
   def abort_mission
-    # чёт не то, пусть разбирается дальше, пока резерв не истёк
-    redirect_to payment_url
+    # чёт не то, пусть разбирается дальше, пока резерв не истёк )
+    redirect_to action: :purchase_aborted
+  end
+
+  def purchase_complete(ticket)
+    @ticket = ticket
+  end
+
+  def purchase_aborted
+
   end
 
 end
