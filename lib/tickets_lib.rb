@@ -14,15 +14,21 @@ module TicketsLib
       session[:tid] = tid
 
       # резервирование билета который выбрал
-      ticket = Ticket.find(tid)
-      if ticket.update(ticket_status_id: 2, user_id: session[:uid], reserve_start_time: DateTime.now)
-        UserMailer.ticket_reserved(ticket).deliver_now
-        # снаряжаем фоновую задачу правильным образом !
-        TicketUnreserveJob.set(wait_until: DateTime.now + RobokassaController::RESERVE_TIME).perform_later(tid, session[:uid])
-        flash[:notice] = 'Билет успешно зарезервирован'
-        'payment'
+      tickets = Ticket.where(id: tid, ticket_status_id: 1)
+      if tickets.any?
+        ticket = tickets.first
+        if ticket.update(ticket_status_id: 2, user_id: session[:uid], reserve_start_time: DateTime.now)
+          UserMailer.ticket_reserved(ticket).deliver_now
+          # снаряжаем фоновую задачу правильным образом !
+          TicketUnreserveJob.set(wait_until: DateTime.now + RobokassaController::RESERVE_TIME).perform_later(tid, session[:uid])
+          flash[:notice] = 'Билет успешно зарезервирован'
+          'payment'
+        else
+          flash[:notice] = 'Потеря связи, зарезервируйте билет повторно'
+          'root'
+        end
       else
-        flash[:notice] = 'Потеря связи, зарезервируйте билет повторно'
+        flash[:notice] = 'Этот билет только что зарезервирован другим пользователем, выберите другой билет'
         'root'
       end
     else

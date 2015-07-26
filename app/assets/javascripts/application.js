@@ -16,4 +16,4 @@
 //= require_tree .
 //= require lightbox
 
-$('.carousel').carousel();
+$('.carousel').carousel()
