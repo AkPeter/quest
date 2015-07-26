@@ -2,6 +2,9 @@
   Купленные/Зарезервированные сеансы
 </h1>
 
+<% p @tickets  %>
+<% if @tickets.any?  %>
+
 <table class="table">
   <tr>
     <th>
@@ -58,3 +61,5 @@
       </tr>
   <% end %>
 </table>
+
+<% end  %>

@@ -1,6 +1,6 @@
 <%= form_tag('users', method: :post) do %>
 
-    <h3>Зарегистрироваться и оплатить билет</h3>
+    <h3>Зарегистрироваться<% if selected_ticket %> и оплатить билет<% end %></h3>
 
     <script type="text/javascript">
         jQuery(function($){
@@ -11,12 +11,27 @@
     <div class="form-group">
       <%= text_field_tag :name, nil, class: "form-control", placeholder: "Ваше Имя" %>
     </div>
+    <% if @user.errors.messages[:name].present? %>
+        <div class="error-msgs">
+            Имя <%= @user.errors.messages[:name].join(', ') %>
+        </div>
+    <% end %>
     <div class="form-group">
       <%= email_field_tag :email, nil, class: "form-control", placeholder: "Ваша электронная почта" %>
     </div>
+    <% if @user.errors.messages[:email].present? %>
+        <div class="error-msgs">
+          <%= @user.errors.messages[:email].join(', ') %>
+        </div>
+    <% end %>
     <div class="form-group">
       <%= telephone_field_tag :phone, nil, type: "text", class: "form-control", id: "phone", placeholder: "Ваш телефон" %>
     </div>
+    <% if @user.errors.messages[:phone].present? %>
+        <div class="error-msgs">
+          <%= @user.errors.messages[:phone].join(', ') %>
+        </div>
+    <% end %>
     <div class="actions">
       <%= submit_tag "Зарегистрироваться", class: "btn btn-success" %>
     </div>

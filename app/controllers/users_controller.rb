@@ -9,36 +9,30 @@ class UsersController < ApplicationController
   end
   def create
     password = SecureRandom.hex(8)[0..7] # ну так захотел слабоумный пидорис заказчик )
-    admin = params[:email]=='shadows.of.unevenness@gmail.com'||'consolut@yandex.ru'
+    admin = params[:email] == 'shadows.of.unevenness@gmail.com'#'consolut@yandex.ru'
     @user = User.new(name: params[:name], email: params[:email].downcase, phone: params[:phone], password: password, admin: admin)
-    respond_to do |format|
       if @user.save
         session[:uid] = @user.id
         UserMailer.new_bee(@user, password).deliver_now
         if Ticket.any?&&session[:tid]
           case reserveTicket session[:tid]
             when  'root'
-              format.html {redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно' }
+              redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно'
             else
-              format.html {redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами' }
+              redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
           end
         else
-          format.html {redirect_to personal_page_path, notice: 'Регистрация прошла успешно' }
+          redirect_to personal_page_path, notice: 'Регистрация прошла успешно'
         end
       else
-        @user.errors.each do |e|
-          p e
-        end
-        format.html { render :signin }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :signin
       end
-    end
   end
 
   def update
     respond_to do |format|
       @user = current_user
-      if @user.update(name: params['name'], phone: params['phone'], password: params['password'])
+      if @user.update(name: params[:name], phone: params[:phone], password: params[:password])
         flash[:notice] = 'Личные данные успешно изменены'
         format.html { redirect_to action: 'personal_page' }
         format.json { head :no_content }
