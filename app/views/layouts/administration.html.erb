@@ -34,8 +34,16 @@
       </div>
     </header>
 
-    <section class="container-fluid">
+    <section class="container-fluid container-admin-page">
+
+      <% flash.each do |name, msg| -%>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <%= content_tag :div, msg, class: name %>
+          </div>
+      <% end -%>
+
       <%= yield %>
+
     </section>
 
     <section id="adm-footer">

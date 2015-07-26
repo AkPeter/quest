@@ -71,6 +71,16 @@ a.link-to-index {
   }
 }
 
+a.phone-number {
+  color: #fff !important;
+  text-decoration: none !important;
+  &:hover {
+    color: #fff !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+  }
+}
+
 input, select {    vertical-align:middle; outline:none;}
 textarea  {overflow:auto; outline:none;}
 ul { list-style:none;}
@@ -561,6 +571,11 @@ p.img-description {
 }
 
 /* Administration */
+
+.container-admin-page {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
 
 .admin-menu {
   position: relative;
