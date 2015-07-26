@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   PasswordResurrectionKillDelay = 15.minutes
 
-
   include TicketsLib
 
   def signin
