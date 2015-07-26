@@ -13,7 +13,7 @@
     </div>
     <% if @user.errors.messages[:name].present? %>
         <div class="error-msgs">
-            Имя <%= @user.errors.messages[:name].join(', ') %>
+          <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Имя <%= @user.errors.messages[:name].join(', ') %>
         </div>
     <% end %>
     <div class="form-group">
@@ -21,7 +21,7 @@
     </div>
     <% if @user.errors.messages[:email].present? %>
         <div class="error-msgs">
-          <%= @user.errors.messages[:email].join(', ') %>
+          <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> <%= @user.errors.messages[:email].join(', ') %>
         </div>
     <% end %>
     <div class="form-group">
@@ -29,7 +29,7 @@
     </div>
     <% if @user.errors.messages[:phone].present? %>
         <div class="error-msgs">
-          <%= @user.errors.messages[:phone].join(', ') %>
+          <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> <%= @user.errors.messages[:phone].join(', ') %>
         </div>
     <% end %>
     <div class="actions">
