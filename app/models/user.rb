@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_validation :phone_normalize
 
-  after_destroy { |record| record.tickets.update_all(ticket_status_id:1, user_id:nil) }
+  before_destroy { |record| record.tickets.update_all(ticket_status_id:1, user_id:nil) }
 
   has_many :tickets
   has_many :responses, dependent: :destroy
