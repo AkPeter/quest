@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label 'Результат прохождения' %><br>
-    <%= f.time_select :besttime, :default => Time.new.at_beginning_of_day %>
+    <%= f.time_select :besttime, default: Time.new.at_beginning_of_day, ampm: false %>
   </div>
     <div class="field">
       <%= f.label 'Описание' %><br>
