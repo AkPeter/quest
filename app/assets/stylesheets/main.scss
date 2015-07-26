@@ -1159,7 +1159,7 @@ input.btn.btn-success.btn-lg {
 .prompt:hover:after {
   background-color: darkmagenta;
   border-radius: 5px;
-  bottom: 26px;
+  bottom: 36px;
   color: #fff;
   content: attr(title);
   left: 0;
@@ -1167,17 +1167,16 @@ input.btn.btn-success.btn-lg {
   padding: 5px 15px;
   position: absolute;
   z-index: 98;
-  min-width: 130px;
-  max-width: 200px;
+  width: 130px;
 }
 
 .prompt:hover:before {
   border: solid;
   border-color: darkmagenta transparent;
   border-width: 6px 6px 0 6px;
-  bottom: 20px;
+  bottom: 30px;
   content: "";
-  left: 50%;
+  left: 2K0%;
   position: absolute;
   z-index: 99;
 }
