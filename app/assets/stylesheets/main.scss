@@ -1146,7 +1146,6 @@ input.btn.btn-success.btn-lg {
 /* Prompt */
 
 .prompt {
-  display: inline;
   position: relative;
   text-align: center;
 }
@@ -1162,7 +1161,7 @@ input.btn.btn-success.btn-lg {
   padding: 5px 15px;
   position: absolute;
   z-index: 98;
-  min-width: 140px;
+  min-width: 130px;
   max-width: 200px;
 }
 
