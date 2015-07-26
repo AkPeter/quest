@@ -61,7 +61,8 @@
         <div id="menu" class="col-xs-12 quest-h-adress">
           <p class="h-phone"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +7 (499) 322-04-28</p>
           <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@lockinroom.ru</p>
-          <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <a class="link-to-footer" href="#footer" title="Контактная информация и как добраться">Москва, ул. Дворникова 7</a></p>
+          <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <a class="prompt link-to-footer" href="#footer" title="Контактная информация и как добраться">Москва, ул. Дворникова 7</a></p>
+          <p><span class="metro-icon" aria-hidden="true"></span> Авиамоторная</p>
           <p><a href="#content-area" class="btn btn-danger reserve-button">Зарезервировать билет</a></p>
         </div>
       </div>
@@ -106,7 +107,7 @@
             <% ticket_hash.each do |ticket| %>
                 <% ticket.ticket_status_id = 5 if DateTime.now > ticket.dt.to_datetime %>
                   <div class="ticket-button-width" style="width: <%= tickets_view_percent current_quest %>%;">
-                    <div class="ticket-button ticket-status<%= ticket.ticket_status_id %>" id="<%= ticket.id %>">
+                    <div class="ticket-button prompt ticket-status<%= ticket.ticket_status_id %>" id="<%= ticket.id %>" title="Билет за <%= ticket.price %>руб., начало в <%= ticket.dt.to_datetime.strftime('%H:%M') %>">
                       <span class="ticket-price"><%= ticket.price %>р.</span>
                       <span class="ticket-time"><%= ticket.dt.to_datetime.strftime('%H:%M') %></span>
                     </div>

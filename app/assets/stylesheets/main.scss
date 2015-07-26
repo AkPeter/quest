@@ -113,6 +113,16 @@ h1 {
   transition: 0.3s linear;
 }
 
+.metro-icon {
+  background-image: image_url('metro.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 25px;
+  height: 14px;
+  margin-bottom: -2px;
+}
+
 .content-center {
   text-align: center;
 }
@@ -295,6 +305,7 @@ header#header {
   color: darkred;
   font-size: 16px;
   padding: 10px 20px;
+  text-align: center;
 }
 
 /* Content */
@@ -305,8 +316,9 @@ header#header {
   padding: 20px 0 30px 0;
   border-bottom: 1px dashed #333;
   min-height: 800px;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.6);
+  background-image: image_url('c-fon2.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 #content {
@@ -433,6 +445,21 @@ header#header {
   }
 }
 
+.winners-slider {
+  height: 300px;
+  position: relative !important;
+  z-index: 30;
+  background-color: #0a1c34;
+  .item {
+    width: 100%;
+    margin: 0;
+    height: 300px;
+  }
+  .carousel-control:focus, .carousel-control:hover {
+    background-color: transparent !important;
+  }
+}
+
 /* Signin */
 
 .content-z-top {
@@ -489,8 +516,7 @@ header#header {
   color: #fff;
   float: left;
   padding: 10px 32px 15px 32px;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.6);
+  background: #111825;
 }
 
 .pabediteli {
@@ -1107,4 +1133,38 @@ input.btn.btn-success.btn-lg {
     background-position: center;
   }
 
+}
+
+/* Prompt */
+
+.prompt {
+  display: inline;
+  position: relative;
+  text-align: center;
+}
+
+.prompt:hover:after {
+  background-color: darkmagenta;
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  content: attr(title);
+  left: 0;
+  font-size: 11px;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  min-width: 140px;
+  max-width: 200px;
+}
+
+.prompt:hover:before {
+  border: solid;
+  border-color: darkmagenta transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
 }
