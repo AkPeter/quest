@@ -71,7 +71,7 @@ class MainController < ApplicationController
 
     @picturesofwinners = Picturesofwinner.all.order(created_at: :desc).limit(18).in_groups_of(6)
 
-    @responses = Response.all.where('quest_item_id=?', current_quest).order(create_at: desc)
+    @responses = Response.all.where('quest_item_id=?', current_quest).order(create_at: :desc)
 
     @tickets_view_percent = tickets_view_percent current_quest
 
