@@ -15,11 +15,11 @@
       <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 prepaid-message content-center">После входа вы будете перенаправлены на страницу оплаты в системе РОБОКАССА</div>
   <% end %>
 
-    <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 signin-block">
+    <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-xs-12 signin-block">
       <%= render :partial => 'shared/signin' %>
       <%= render :partial => 'shared/generate_new_password', :locals => {:uid => local_assigns.fetch(:uid)} if local_assigns.has_key? :uid %>
     </div>
-    <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 payment-block">
+    <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-12 col-xs-12 payment-block">
       <%= render :partial => 'shared/registration' %>
     </div>
 

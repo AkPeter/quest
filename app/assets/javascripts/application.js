@@ -17,5 +17,3 @@
 //= require lightbox
 
 $('.carousel').carousel();
-
-$('.winners').carousel();

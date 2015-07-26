@@ -401,6 +401,13 @@ header#header {
   }
 }
 
+p.img-description {
+  height: 35px;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
 .img-date {
   font-size: 80%;
 }
@@ -437,23 +444,37 @@ header#header {
 }
 
 .winners-slider {
-  height: 300px;
   position: relative !important;
   z-index: 30;
   .item {
-    width: 100%;
-    margin: 0;
-    height: 300px;
+    width: 80%;
+    margin: 0 10%;
+    p.img-description {
+      height: 35px;
+      overflow: hidden;
+      line-height: 1,2;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px !important;
+    }
+    a {
+      &:hover {
+        background-color: transparent;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: 0.3s linear;
+      }
+    }
   }
   .carousel-control, .carousel-control {
     background-color: transparent !important;
     background-image: initial !important;
-    width: 5% !important;
+    width: 30px !important;
   }
   .carousel-control:focus, .carousel-control:hover {
     background-color: transparent !important;
     background-image: initial !important;
-    width: 5% !important;
+    width: 30px !important;
   }
 }
 
@@ -490,18 +511,21 @@ header#header {
 
 .selected-block {
   border: 1px solid darkmagenta;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-top: 20px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  h3 {
+    margin-top: 7px;
+    margin-bottom: 10px;
+  }
 }
 
 .signin-block, .payment-block {
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
   padding-bottom: 15px;
 }
 
@@ -882,7 +906,7 @@ input.btn.btn-success.btn-lg {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   .super-header {
     padding: 0;
@@ -984,7 +1008,7 @@ input.btn.btn-success.btn-lg {
     }
   }
 
-  .price-set {
+  .price-set, .img-date, .img-description {
     display: none;
   }
 
@@ -1113,7 +1137,7 @@ input.btn.btn-success.btn-lg {
     }
   }
 
-  .price-set {
+  .price-set, .img-date, .img-description {
     display: none;
   }
 

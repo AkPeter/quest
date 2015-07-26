@@ -22,7 +22,7 @@
     <!-- сделать если авторизован ссыль на профиль, если нет - ссыль на вход -->
     <% if current_user&&current_user.admin %>
         <%= link_to admin_main_index_url, class: 'user-auth' do %>
-            <p><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><br>Администрирование</p>
+            <p><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><br>Админ</p>
         <% end %>
     <% end %>
     <% unless current_user %>
