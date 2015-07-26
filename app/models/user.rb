@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'введите настоящий адрес электронной почты'}
 
   def phone_normalize
-    self.phone = phone.gsub(/[+7]|[\s\(\)\-]/, '')
+    self.phone = phone.gsub(/^\+7|[\+\s\(\)\-]/, '')
   end
 
   def unreserve_user_tickets
