@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  PasswordResurrectionKillDelay = 15.minutes
+
+
   include TicketsLib
 
   def signin
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
   end
   def create
     password = SecureRandom.hex(8)[0..7] # ну так захотел слабоумный пидорис заказчик )
-    admin = params[:email] == 'shadows.of.unevenness@gmail.com'#'consolut@yandex.ru'
+    admin = params[:email] == 'shadows.of.unevenness@gmail.com'
     @user = User.new(name: params[:name], email: params[:email].downcase, phone: params[:phone], password: password, admin: admin)
       if @user.save
         session[:uid] = @user.id
@@ -44,10 +47,18 @@ class UsersController < ApplicationController
     end
   end
   def password_reset
-    new_password = SecureRandom.hex(8)[0..7]
+    resurrection =  SecureRandom.hex(8)
     @user = User.find(params[:uid])
-    if @user.update(password: new_password)
-      UserMailer.password_reset(@user, new_password).deliver_now
+    if @user.update(resurrection: resurrection)
+      UserMailer.password_reset(@user, resurrection).deliver_now
+      # снаряжаем фоновую задачу правильным образом !
+      kill_time = DateTime.now + UsersController::PasswordResurrectionKillDelay
+      TicketUserRemindJob.set(wait_until: kill_time).perform_later(@user.id)
+
+      flash[:notice] = 'Инструкция для смены пароля была выслана на Ваш email'
+      redirect_to signin_url
+    else
+      flash[:notice] = 'Вероятно проблемы со связью, попробуйте заново'
       redirect_to signin_url
     end
   end

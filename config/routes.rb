@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'payment' => 'robokassa#prepay', as: 'payment'
 
   get 'signin' => 'users#signin', as: 'signin'
+  get 'resurrection' => 'session#resurrection', as: 'resurrection'
   post 'users' => 'users#create'
   post 'user_upd' => 'users#update'
   post 'password_reset' => 'users#password_reset'

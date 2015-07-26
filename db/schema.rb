@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150722213109) do
     t.string   "email"
     t.string   "phone"
     t.string   "password_digest"
+    t.string   "resurrection"
     t.boolean  "admin",           default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

@@ -16,14 +16,17 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: "С подключением на #{ApplicationController::Domain} !")
   end
 
-  def password_reset(user, new_password)
+  def password_reset(user, resurrection)
     @username = user.name
-    @signin  = ApplicationController::SignInURL
-    @new_password = user, new_password
+    require 'uri'
+    @uri = URI "#{ApplicationController::SignInURL}/resurrection"
+    params = {:resurrection_code => resurrection}
+    @uri.query = URI.encode_www_form params
+    p @uri
 
-    sms_password_reset user, new_password if user.phone
+    # sms_password_reset user, new_password if user.phone
 
-    mail(to: user.email, subject: "Новый пароль для входа на #{ApplicationController::Domain}")
+    mail(to: user.email, subject: "Инструкция по восстановлению пароля на #{ApplicationController::Domain}")
   end
 
   def ticket_reserved(ticket)
