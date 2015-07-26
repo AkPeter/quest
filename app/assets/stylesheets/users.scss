@@ -2,10 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.error-msgs {
+.error-msgs, #notice, .notice {
   color: darkred;
   font-weight: bold;
   padding: 5px 10px;
   margin-bottom: 15px;
   line-height: 1;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
