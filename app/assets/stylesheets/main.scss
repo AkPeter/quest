@@ -449,14 +449,20 @@ header#header {
   height: 300px;
   position: relative !important;
   z-index: 30;
-  background-color: #0a1c34;
   .item {
     width: 100%;
     margin: 0;
     height: 300px;
   }
+  .carousel-control, .carousel-control {
+    background-color: transparent !important;
+    background-image: initial !important;
+    width: 5% !important;
+  }
   .carousel-control:focus, .carousel-control:hover {
     background-color: transparent !important;
+    background-image: initial !important;
+    width: 5% !important;
   }
 }
 
