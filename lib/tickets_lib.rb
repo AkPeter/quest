@@ -25,11 +25,11 @@ module TicketsLib
           'payment'
         else
           flash[:notice] = 'Потеря связи, зарезервируйте билет повторно'
-          'root'
+          '/'
         end
       else
         flash[:notice] = 'Этот билет только что зарезервирован другим пользователем, выберите другой билет'
-        'root'
+        '/'
       end
     else
       session[:tid] = tid

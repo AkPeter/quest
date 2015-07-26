@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         UserMailer.new_bee(@user, password).deliver_now
         if Ticket.any?&&session[:tid]
           case reserveTicket session[:tid]
-            when  'root'
+            when  '/'
               redirect_to root_url, notice: 'Потеря связи, зарезервируйте билет повторно'
             else
               redirect_to payment_url, notice: 'Регистрация прошла успешно, билет зарезервирован за Вами'
