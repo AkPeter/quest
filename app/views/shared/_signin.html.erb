@@ -8,6 +8,9 @@
     <div class="form-group">
       <%= password_field_tag :password, nil, class: "form-control", placeholder: "Пароль (был выслан на почту)" %>
     </div>
+    <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+    <% end -%>
     <div class="actions">
       <%= submit_tag 'Войти', class: "btn btn-success" %>
     </div>

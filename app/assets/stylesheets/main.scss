@@ -299,15 +299,6 @@ header#header {
   }
 }
 
-/* Notice */
-
-#notice, .notice {
-  color: darkred;
-  font-size: 16px;
-  padding: 10px 20px;
-  text-align: center;
-}
-
 /* Content */
 
 #content-area {
@@ -449,14 +440,20 @@ header#header {
   height: 300px;
   position: relative !important;
   z-index: 30;
-  background-color: #0a1c34;
   .item {
     width: 100%;
     margin: 0;
     height: 300px;
   }
+  .carousel-control, .carousel-control {
+    background-color: transparent !important;
+    background-image: initial !important;
+    width: 5% !important;
+  }
   .carousel-control:focus, .carousel-control:hover {
     background-color: transparent !important;
+    background-image: initial !important;
+    width: 5% !important;
   }
 }
 
@@ -1146,7 +1143,6 @@ input.btn.btn-success.btn-lg {
 /* Prompt */
 
 .prompt {
-  display: inline;
   position: relative;
   text-align: center;
 }
@@ -1154,7 +1150,7 @@ input.btn.btn-success.btn-lg {
 .prompt:hover:after {
   background-color: darkmagenta;
   border-radius: 5px;
-  bottom: 26px;
+  bottom: 36px;
   color: #fff;
   content: attr(title);
   left: 0;
@@ -1162,17 +1158,16 @@ input.btn.btn-success.btn-lg {
   padding: 5px 15px;
   position: absolute;
   z-index: 98;
-  min-width: 140px;
-  max-width: 200px;
+  width: 130px;
 }
 
 .prompt:hover:before {
   border: solid;
   border-color: darkmagenta transparent;
   border-width: 6px 6px 0 6px;
-  bottom: 20px;
+  bottom: 30px;
   content: "";
-  left: 50%;
+  left: 21%;
   position: absolute;
   z-index: 99;
 }
