@@ -69,7 +69,7 @@ class MainController < ApplicationController
       start_time += session_length.minutes
     end
 
-    @picturesofwinners = Picturesofwinner.all
+    @picturesofwinners = Picturesofwinner.all.order(created_at: :desc).limit(18).combination(6).to_a
 
     @responses = Response.all.where('quest_item_id=?', current_quest)
 

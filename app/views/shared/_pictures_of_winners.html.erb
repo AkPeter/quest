@@ -9,7 +9,7 @@
       <div class="carousel-inner" role="listbox">
         <div class="item active">
           <div class="col-xs-12">
-            <% @picturesofwinners.each do |record| %>
+            <% @picturesofwinners[0].each do |record| %>
 
                 <!--можешь ставить :thumb    => ['200x200#',  :jpg, :quality => 66],
                 :preview  => ['480x480#',  :jpg, :quality => 88],
@@ -25,11 +25,44 @@
                 </div>
 
             <% end  %>
+
           </div>
         </div>
         <div class="item">
+          <% @picturesofwinners[1].each do |record| %>
+
+              <!--можешь ставить :thumb    => ['200x200#',  :jpg, :quality => 66],
+              :preview  => ['480x480#',  :jpg, :quality => 88],
+              :large    => ['600>',      :jpg, :quality => 88],
+              :retina   => ['1200>',     :jpg, :quality => 100-->
+
+              <div class="winner-img col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <a href="<%= record.photourl.url(:large) %>" rel="lightbox" title="<%= record.description %>">
+                  <img src="<%= record.photourl.url(:preview) %>" class="img-responsive" alt="<%= record.description %>">
+                  <p class="img-date"><%= record.goaldate %> <%= record.besttime.strftime("%H:%M") %></p>
+                  <p class="img-description"><%= record.description %></p>
+                </a>
+              </div>
+
+          <% end  %>
         </div>
         <div class="item">
+          <% @picturesofwinners[2].each do |record| %>
+
+              <!--можешь ставить :thumb    => ['200x200#',  :jpg, :quality => 66],
+              :preview  => ['480x480#',  :jpg, :quality => 88],
+              :large    => ['600>',      :jpg, :quality => 88],
+              :retina   => ['1200>',     :jpg, :quality => 100-->
+
+              <div class="winner-img col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <a href="<%= record.photourl.url(:large) %>" rel="lightbox" title="<%= record.description %>">
+                  <img src="<%= record.photourl.url(:preview) %>" class="img-responsive" alt="<%= record.description %>">
+                  <p class="img-date"><%= record.goaldate %> <%= record.besttime.strftime("%H:%M") %></p>
+                  <p class="img-description"><%= record.description %></p>
+                </a>
+              </div>
+
+          <% end  %>
         </div>
       </div>
 
