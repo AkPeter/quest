@@ -474,6 +474,9 @@ p.img-description {
       }
     }
   }
+  .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+    top: 37%;
+  }
   .carousel-control, .carousel-control {
     background-color: transparent !important;
     background-image: initial !important;
