@@ -1,14 +1,14 @@
 <div class="auth-block content-z-top col-lg-offset-3 col-lg-6">
 
-  <p>билет куплен</p>
+  <p>Билет куплен</p>
 
   <ul>
-    <li>квест <%= @ticket.quest_item.name %></li>
-    <li>начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
+    <li>Квест <%= @ticket.quest_item.name %></li>
+    <li>Начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
   </ul>
 
-  Вам перезвонят
+  Спасибо, Вам перезвонят!
 
-  <%= link_to 'вернуться на главную страницу', root_url %>
+  <%= link_to 'Вернуться на главную страницу', root_url %>
 
 </div>

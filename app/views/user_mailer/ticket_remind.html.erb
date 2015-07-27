@@ -4,8 +4,8 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<%= @ticket.user.name %> !<br>
-не пропусти свой квест <%= @ticket.quest_item.name %> !<br>
-начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %><br>
+<%= @ticket.user.name %>!<br>
+Не пропусти свой квест <%= @ticket.quest_item.name %> !<br>
+Начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %><br>
 </body>
 </html>

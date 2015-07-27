@@ -5,9 +5,9 @@
 </head>
 <body>
 <%= @ticket.user.name %> приобрёл билет
-квест <%= @ticket.quest_item.name %>
-сеанс <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
-почта <%= @ticket.user.email %>
-телефон <%= @ticket.user.phone %>
+Квест <%= @ticket.quest_item.name %>
+Сеанс <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %>
+Почта <%= @ticket.user.email %>
+Телефон <%= @ticket.user.phone %>
 </body>
 </html>

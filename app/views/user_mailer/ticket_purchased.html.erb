@@ -4,9 +4,9 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-привет <%= @ticket.user.name %> !
-<li>твой билет на квест <%= @ticket.quest_item.name %></li>
-<li>начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
-<li>не пропусти !</li>
+Привет <%= @ticket.user.name %>!
+<li>Твой билет на квест <%= @ticket.quest_item.name %></li>
+<li>Начало <%= l(@ticket.dt.to_datetime, :format => "%d %B %A %H:%M") %></li>
+<li>Не пропусти !</li>
 </body>
 </html>
