@@ -460,7 +460,7 @@ p.img-description {
     p.img-description {
       height: 35px;
       overflow: hidden;
-      line-height: 1,2;
+      line-height: 1.2;
       display: inline-block;
       width: 100%;
       margin-bottom: 20px !important;
@@ -718,6 +718,50 @@ a.link-to-footer {
       border-color: #55534D;
     }
   }
+}
+
+/* Prompt */
+
+.prompt {
+  position: relative;
+  text-align: center;
+}
+
+.prompt:hover:after {
+  background-color: darkmagenta;
+  border-radius: 5px;
+  bottom: 36px;
+  color: #fff;
+  content: attr(title);
+  left: 0;
+  font-size: 11px;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+}
+.prompt.ticket-status2:hover:after {
+  content: "Билет зарезервирован";
+}
+.prompt.ticket-status3:hover:after {
+  content: "Билет куплен";
+}
+.prompt.ticket-status4:hover:after {
+  content: "Нет билета на это время";
+}
+.prompt.ticket-status5:hover:after {
+  content: "Время покупки вышло";
+}
+
+.prompt:hover:before {
+  border: solid;
+  border-color: darkmagenta transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 30px;
+  content: "";
+  left: 21%;
+  position: absolute;
+  z-index: 99;
 }
 
 .price-set-block {
@@ -1175,36 +1219,4 @@ input.btn.btn-success.btn-lg {
     background-position: center;
   }
 
-}
-
-/* Prompt */
-
-.prompt {
-  position: relative;
-  text-align: center;
-}
-
-.prompt:hover:after {
-  background-color: darkmagenta;
-  border-radius: 5px;
-  bottom: 36px;
-  color: #fff;
-  content: attr(title);
-  left: 0;
-  font-size: 11px;
-  padding: 5px 15px;
-  position: absolute;
-  z-index: 98;
-  width: 130px;
-}
-
-.prompt:hover:before {
-  border: solid;
-  border-color: darkmagenta transparent;
-  border-width: 6px 6px 0 6px;
-  bottom: 30px;
-  content: "";
-  left: 21%;
-  position: absolute;
-  z-index: 99;
 }
